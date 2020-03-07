@@ -1,0 +1,409 @@
+root@Mcalab1-33:/usr/local/hyperledger/fabric-samples/Govtfiles# ./byfn.sh generate
+Generating certs and genesis block for channel 'mychannel' with CLI timeout of '15' seconds and CLI delay of '10' seconds
+Continue? [Y/n] y
+proceeding ...
+/usr/local/hyperledger/fabric-samples/Govtfiles/../bin/cryptogen
+
+##########################################################
+##### Generate certificates using cryptogen tool #########
+##########################################################
++ cryptogen generate --config=./crypto-config.yaml
+org1.example.com
+org2.example.com
+org3.example.com
++ res=0
++ set +x
+
+/usr/local/hyperledger/fabric-samples/Govtfiles/../bin/configtxgen
+##########################################################
+#########  Generating Orderer Genesis block ##############
+##########################################################
+CONSENSUS_TYPE=solo
++ '[' solo == solo ']'
++ configtxgen -profile ThreeOrgsOrdererGenesis -channelID byfn-sys-channel -outputBlock ./channel-artifacts/genesis.block
+2020-02-21 12:52:10.170 IST [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2020-02-21 12:52:10.181 IST [common.tools.configtxgen.localconfig] completeInitialization -> INFO 002 orderer type: solo
+2020-02-21 12:52:10.181 IST [common.tools.configtxgen.localconfig] Load -> INFO 003 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.192 IST [common.tools.configtxgen.localconfig] completeInitialization -> INFO 004 orderer type: solo
+2020-02-21 12:52:10.192 IST [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 005 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.194 IST [common.tools.configtxgen] doOutputBlock -> INFO 006 Generating genesis block
+2020-02-21 12:52:10.194 IST [common.tools.configtxgen] doOutputBlock -> INFO 007 Writing genesis block
++ res=0
++ set +x
+
+#################################################################
+### Generating channel configuration transaction 'channel.tx' ###
+#################################################################
++ configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel
+2020-02-21 12:52:10.216 IST [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2020-02-21 12:52:10.227 IST [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.237 IST [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003 orderer type: solo
+2020-02-21 12:52:10.237 IST [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.237 IST [common.tools.configtxgen] doOutputChannelCreateTx -> INFO 005 Generating new channel configtx
+2020-02-21 12:52:10.239 IST [common.tools.configtxgen] doOutputChannelCreateTx -> INFO 006 Writing new channel tx
++ res=0
++ set +x
+
+#################################################################
+#######    Generating anchor peer update for Org1MSP   ##########
+#################################################################
++ configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID mychannel -asOrg Org1MSP
+2020-02-21 12:52:10.260 IST [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2020-02-21 12:52:10.271 IST [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.281 IST [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003 orderer type: solo
+2020-02-21 12:52:10.281 IST [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.281 IST [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 005 Generating anchor peer update
+2020-02-21 12:52:10.282 IST [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 006 Writing anchor peer update
++ res=0
++ set +x
+
+#################################################################
+#######    Generating anchor peer update for Org2MSP   ##########
+#################################################################
++ configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -channelID mychannel -asOrg Org2MSP
+2020-02-21 12:52:10.302 IST [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2020-02-21 12:52:10.313 IST [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.323 IST [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003 orderer type: solo
+2020-02-21 12:52:10.323 IST [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.323 IST [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 005 Generating anchor peer update
+2020-02-21 12:52:10.323 IST [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 006 Writing anchor peer update
++ res=0
++ set +x
+
+#################################################################
+#######    Generating anchor peer update for Org3MSP   ##########
+#################################################################
++ configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -channelID mychannel -asOrg Org3MSP
+2020-02-21 12:52:10.345 IST [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2020-02-21 12:52:10.355 IST [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.366 IST [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003 orderer type: solo
+2020-02-21 12:52:10.366 IST [common.tools.configtxgen.localconfig] LoadTopLevel -> INFO 004 Loaded configuration: /usr/local/hyperledger/fabric-samples/Govtfiles/configtx.yaml
+2020-02-21 12:52:10.366 IST [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 005 Generating anchor peer update
+2020-02-21 12:52:10.366 IST [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 006 Writing anchor peer update
++ res=0
++ set +x
+
+root@Mcalab1-33:/usr/local/hyperledger/fabric-samples/Govtfiles# ./byfn.sh up
+Starting for channel 'mychannel' with CLI timeout of '15' seconds and CLI delay of '10' seconds
+Continue? [Y/n] y
+proceeding ...
+LOCAL_VERSION=1.4.2
+DOCKER_IMAGE_VERSION=1.4.2
+hey i am here !!!!!!!!!!1111
+hey i am here !!!!!!!!!!3333
+Creating network "net_byfn" with the default driver
+Creating volume "net_peer0.org3.example.com" with default driver
+Creating volume "net_peer3.org3.example.com" with default driver
+Creating volume "net_orderer.example.com" with default driver
+Creating volume "net_peer1.org3.example.com" with default driver
+Creating volume "net_peer0.org2.example.com" with default driver
+Creating volume "net_peer0.org1.example.com" with default driver
+Creating volume "net_peer2.org3.example.com" with default driver
+Creating orderer.example.com ... 
+Creating peer0.org2.example.com ... 
+Creating peer3.org3.example.com ... 
+Creating peer0.org3.example.com ... 
+Creating peer0.org1.example.com ... 
+Creating peer1.org3.example.com ... 
+Creating peer2.org3.example.com ... 
+Creating orderer.example.com
+Creating peer0.org1.example.com
+Creating peer3.org3.example.com
+Creating peer0.org3.example.com
+Creating peer2.org3.example.com
+Creating peer0.org2.example.com
+Creating orderer.example.com ... done
+Creating cli ... 
+Creating cli ... done
+CONTAINER ID        IMAGE                               COMMAND             CREATED             STATUS                  PORTS                      NAMES
+1873e2ffda52        hyperledger/fabric-tools:latest     "/bin/bash"         3 seconds ago       Up Less than a second                              cli
+a22e5c184186        hyperledger/fabric-peer:latest      "peer node start"   11 seconds ago      Up 4 seconds            0.0.0.0:10051->10051/tcp   peer1.org3.example.com
+a512be5c9754        hyperledger/fabric-peer:latest      "peer node start"   11 seconds ago      Up 5 seconds            0.0.0.0:11051->11051/tcp   peer2.org3.example.com
+d467b84073c3        hyperledger/fabric-peer:latest      "peer node start"   11 seconds ago      Up 5 seconds            0.0.0.0:8051->8051/tcp     peer0.org2.example.com
+7e2901c8937e        hyperledger/fabric-peer:latest      "peer node start"   11 seconds ago      Up 7 seconds            0.0.0.0:9051->9051/tcp     peer0.org3.example.com
+42d90b431574        hyperledger/fabric-peer:latest      "peer node start"   11 seconds ago      Up 6 seconds            0.0.0.0:12051->12051/tcp   peer3.org3.example.com
+4da23f3b57aa        hyperledger/fabric-peer:latest      "peer node start"   11 seconds ago      Up 8 seconds            0.0.0.0:7051->7051/tcp     peer0.org1.example.com
+74a842b5d9f4        hyperledger/fabric-orderer:latest   "orderer"           11 seconds ago      Up 3 seconds            0.0.0.0:7050->7050/tcp     orderer.example.com
+hey i am here !!!!!!!!!!44444
+
+ ____    _____      _      ____    _____ 
+/ ___|  |_   _|    / \    |  _ \  |_   _|
+\___ \    | |     / _ \   | |_) |   | |  
+ ___) |   | |    / ___ \  |  _ <    | |  
+|____/    |_|   /_/   \_\ |_| \_\   |_|  
+
+Build your first network (BYFN) end-to-end test
+
+Channel name : mychannel
+Creating channel...
++ peer channel create -o orderer.example.com:7050 -c mychannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
++ res=0
++ set +x
+2020-02-21 07:22:30.138 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:22:30.262 UTC [cli.common] readBlock -> INFO 002 Received block: 0
+===================== Channel 'mychannel' created ===================== 
+
+Having all peers join the channel...
+in for loop
+0 1
+before setting globals
+0 1
++ peer channel join -b mychannel.block
++ res=0
++ set +x
+2020-02-21 07:22:30.346 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:22:30.750 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
+===================== peer0.org1 joined channel 'mychannel' ===================== 
+
+in for loop
+0 2
+before setting globals
+0 2
++ peer channel join -b mychannel.block
++ res=0
++ set +x
+2020-02-21 07:22:40.840 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:22:41.305 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
+===================== peer0.org2 joined channel 'mychannel' ===================== 
+
+before setting globals
+0 3
+0 3
+hey 000
++ peer channel join -b mychannel.block
++ res=0
++ set +x
+2020-02-21 07:22:51.355 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:22:51.798 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
+===================== peer0.org3 joined channel 'mychannel' ===================== 
+
+before setting globals
+1 3
+1 3
+Hey i 
++ peer channel join -b mychannel.block
++ res=0
++ set +x
+2020-02-21 07:23:01.845 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:23:02.277 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
+===================== peer1.org3 joined channel 'mychannel' ===================== 
+
+before setting globals
+2 3
+2 3
+hey 222
++ peer channel join -b mychannel.block
++ res=0
++ set +x
+2020-02-21 07:23:12.326 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:23:12.780 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
+===================== peer2.org3 joined channel 'mychannel' ===================== 
+
+before setting globals
+3 3
+3 3
+hey 333
++ peer channel join -b mychannel.block
++ res=0
++ set +x
+2020-02-21 07:23:22.826 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:23:23.283 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
+===================== peer3.org3 joined channel 'mychannel' ===================== 
+
+Updating anchor peers for org1...
++ peer channel update -o orderer.example.com:7050 -c mychannel -f ./channel-artifacts/Org1MSPanchors.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
++ res=0
++ set +x
+2020-02-21 07:23:33.335 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:23:33.344 UTC [channelCmd] update -> INFO 002 Successfully submitted channel update
+===================== Anchor peers updated for org 'Org1MSP' on channel 'mychannel' ===================== 
+
+Updating anchor peers for org2...
++ peer channel update -o orderer.example.com:7050 -c mychannel -f ./channel-artifacts/Org2MSPanchors.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
++ res=0
++ set +x
+2020-02-21 07:23:43.391 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:23:43.401 UTC [channelCmd] update -> INFO 002 Successfully submitted channel update
+===================== Anchor peers updated for org 'Org2MSP' on channel 'mychannel' ===================== 
+
+Updating anchor peers for org3...
+0 3
+hey 000
++ peer channel update -o orderer.example.com:7050 -c mychannel -f ./channel-artifacts/Org3MSPanchors.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
++ res=0
++ set +x
+2020-02-21 07:23:53.446 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
+2020-02-21 07:23:53.457 UTC [channelCmd] update -> INFO 002 Successfully submitted channel update
+===================== Anchor peers updated for org 'Org3MSP' on channel 'mychannel' ===================== 
+
+Installing chaincode on peer0.org1...
++ peer chaincode install -n mycc -v 1.0 -l golang -p github.com/chaincode/chaincode_example02/go/
++ res=0
++ set +x
+2020-02-21 07:24:03.512 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+2020-02-21 07:24:03.512 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+2020-02-21 07:24:03.650 UTC [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" > 
+===================== Chaincode is installed on peer0.org1 ===================== 
+
+Install chaincode on peer0.org2...
++ peer chaincode install -n mycc -v 1.0 -l golang -p github.com/chaincode/chaincode_example02/go/
++ res=0
++ set +x
+2020-02-21 07:24:03.699 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+2020-02-21 07:24:03.699 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+2020-02-21 07:24:03.798 UTC [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" > 
+===================== Chaincode is installed on peer0.org2 ===================== 
+
+Install chaincode on peer0.org3...
+0 3
+hey 000
++ peer chaincode install -n mycc -v 1.0 -l golang -p github.com/chaincode/chaincode_example02/go/
++ res=0
++ set +x
+2020-02-21 07:24:03.840 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+2020-02-21 07:24:03.840 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+2020-02-21 07:24:03.935 UTC [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" > 
+===================== Chaincode is installed on peer0.org3 ===================== 
+
+Instantiating chaincode on peer0.org2...
++ peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mycc -l golang -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P 'AND ('\''Org1MSP.peer'\'','\''Org2MSP.peer'\'','\''Org3MSP.peer'\'')'
++ res=0
++ set +x
+2020-02-21 07:24:03.978 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+2020-02-21 07:24:03.978 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+===================== Chaincode is instantiated on peer0.org2 on channel 'mychannel' ===================== 
+
+Querying chaincode on peer0.org1...
+===================== Querying on peer0.org1 on channel 'mychannel'... ===================== 
++ peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
+Attempting to Query peer0.org1 ...10 secs
++ res=0
++ set +x
+
+100
+===================== Query successful on peer0.org1 on channel 'mychannel' ===================== 
+Querying chaincode on peer0.org3...
+0 3
+hey 000
+===================== Querying on peer0.org3 on channel 'mychannel'... ===================== 
+Attempting to Query peer0.org3 ...10 secs
++ peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
++ res=0
++ set +x
+
+100
+===================== Query successful on peer0.org3 on channel 'mychannel' ===================== 
+Sending invoke transaction on peer0.org1 peer0.org2...
+Inside parse function !!!
+peer0.org1 peer0.org1
+rgtrg
+Inside parse function !!!
+peer0.org2 peer0.org1 peer0.org2
+rgtrg
+0 3
+hey 000
+Inside parse function !!!
+peer0.org3 peer0.org1 peer0.org2 peer0.org3
+rgtrg
++ peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mycc --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --peerAddresses peer0.org3.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt -c '{"Args":["invoke","a","b","10"]}'
++ res=0
++ set +x
+2020-02-21 07:25:08.104 UTC [chaincodeCmd] chaincodeInvokeOrQuery -> INFO 001 Chaincode invoke successful. result: status:200 
+===================== Invoke transaction successful on peer0.org1 peer0.org2 peer0.org3 on channel 'mychannel' ===================== 
+
+Querying chaincode on peer1.org2...
+===================== Querying on peer0.org1 on channel 'mychannel'... ===================== 
+Attempting to Query peer0.org1 ...10 secs
++ peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
++ res=0
++ set +x
+
+90
+===================== Query successful on peer0.org1 on channel 'mychannel' ===================== 
+Querying chaincode on peer1.org2...
+===================== Querying on peer0.org1 on channel 'mychannel'... ===================== 
+Attempting to Query peer0.org1 ...10 secs
++ peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
++ res=0
++ set +x
+
+90
+===================== Query successful on peer0.org1 on channel 'mychannel' ===================== 
+
+========= All GOOD, BYFN execution completed =========== 
+
+
+ _____   _   _   ____   
+| ____| | \ | | |  _ \  
+|  _|   |  \| | | | | | 
+| |___  | |\  | | |_| | 
+|_____| |_| \_| |____/  
+
+root@Mcalab1-33:/usr/local/hyperledger/fabric-samples/Govtfiles# ./byfn.sh down
+Stopping for channel 'mychannel' with CLI timeout of '15' seconds and CLI delay of '10' seconds
+Continue? [Y/n] y
+proceeding ...
+Stopping cli                    ... done
+Stopping peer1.org3.example.com ... done
+Stopping peer2.org3.example.com ... done
+Stopping peer0.org2.example.com ... done
+Stopping peer0.org3.example.com ... done
+Stopping peer3.org3.example.com ... done
+Stopping peer0.org1.example.com ... done
+Stopping orderer.example.com    ... done
+Removing cli                    ... done
+Removing peer1.org3.example.com ... done
+Removing peer2.org3.example.com ... done
+Removing peer0.org2.example.com ... done
+Removing peer0.org3.example.com ... done
+Removing peer3.org3.example.com ... done
+Removing peer0.org1.example.com ... done
+Removing orderer.example.com    ... done
+Removing network net_byfn
+Removing volume net_peer0.org3.example.com
+Removing volume net_peer3.org3.example.com
+Removing volume net_orderer.example.com
+Removing volume net_peer1.org3.example.com
+Removing volume net_peer0.org2.example.com
+Removing volume net_peer0.org1.example.com
+Removing volume net_peer2.org3.example.com
+1925a5c50e5a
+ae6be8843d1b
+145a4ea5cbdb
+Untagged: dev-peer0.org3.example.com-mycc-1.0-66f4ea017a5d0ef4f68172404d4e2a44a521476e1551558d56b907ba4b5fd726:latest
+Deleted: sha256:e8a9bacd3d3d8d52e6606e7af78a1d1d869d62692eae33b35a622cc6fff5947b
+Deleted: sha256:47a6512af5150bcf9689e58b07850cee147332e2eb0eda98f4a7287f38690fdc
+Deleted: sha256:3469c0c8ab479fa28267cc21f4565c82ced62da5fcb6764f2adae5bb78b07d97
+Deleted: sha256:4a61770c3a725cdfe8c7273401030e26402d09542cf59fea7c7b266629bb71f0
+Untagged: dev-peer0.org1.example.com-mycc-1.0-384f11f484b9302df90b453200cfb25174305fce8f53f4e94d45ee3b6cab0ce9:latest
+Deleted: sha256:80e5a72ec34b5baf828e33cc1a4137214ff5601ec9a45db8f49ded6843d46cf0
+Deleted: sha256:e80973ad35b5872b0e5f610ec309e0838c164b2aeaaecef0eb3a97369d3dbbc7
+Deleted: sha256:bf734a2741727bc2bc3b6466a98ce272603142047485264de2bbc62873b06707
+Deleted: sha256:caa9591da4cff5b9c899b6e8f1947cc37155d908c277dfe0f5789f4690bcab89
+Untagged: dev-peer0.org2.example.com-mycc-1.0-15b571b3ce849066b7ec74497da3b27e54e0df1345daff3951b94245ce09c42b:latest
+Deleted: sha256:02b6b669e221b8f5e9bb0ae8c6de58889cfc12b8a665922c98526a0af2a6b2bf
+Deleted: sha256:4190201be4ebb1c4753c3e0befeadf278e90e7ffbd996d58421977b8406cf013
+Deleted: sha256:cca08127caee89c14c7e8caed30ab9dd182bf68c0a11f2cc948e545def319686
+Deleted: sha256:fea4dcf8bf0f2238edf3adeea7b1298089ffcbaacd93b0e245a040fb77c751c0
+
+clarin_dsouza@Mcalab1-33:/usr/local/hyperledger/fabric-samples/Govtfiles$ docker logs dev-peer0.org3.example.com-mycc-1.0
+ex02 Invoke
+Query Response:{"Name":"a","Amount":"100"}
+ex02 Invoke
+Aval = 90, Bval = 210
+clarin_dsouza@Mcalab1-33:/usr/local/hyperledger/fabric-samples/Govtfiles$ docker logs dev-peer0.org1.example.com-mycc-1.0
+ex02 Invoke
+Query Response:{"Name":"a","Amount":"100"}
+ex02 Invoke
+Aval = 90, Bval = 210
+ex02 Invoke
+Query Response:{"Name":"a","Amount":"90"}
+ex02 Invoke
+Query Response:{"Name":"a","Amount":"90"}
+clarin_dsouza@Mcalab1-33:/usr/local/hyperledger/fabric-samples/Govtfiles$ docker logs dev-peer0.org2.example.com-mycc-1.0
+ex02 Init
+Aval = 100, Bval = 200
+ex02 Invoke
+Aval = 90, Bval = 210
+
+
