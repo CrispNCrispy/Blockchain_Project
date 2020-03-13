@@ -62,7 +62,7 @@ generateChannelArtifacts() {
     exit 1
   fi
   echo "##########################################################"
-  echo "#########  Generating Org3 config material ###############"
+  echo "#########  Generating Org4 config material ###############"
   echo "##########################################################"
   (cd org3-artifacts
    export FABRIC_CFG_PATH=$PWD
