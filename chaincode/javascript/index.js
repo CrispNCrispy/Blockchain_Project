@@ -4,5 +4,5 @@
 
 'use strict';
 
-const Referral = require('./referral');
-module.exports.contracts = [ Referral ];
+const Request = require('./request');
+module.exports.contracts = [ Request ];

@@ -19,21 +19,17 @@ async queryData(ctx,patientId) {
 
   }
 
-async addData(ctx,patientId,data1,data2,data3) {
+async addData(ctx,patientId,data1) {
    
    let data={
 
        dat1:data1,
 
-       dat2:data2,
-
-       dat3:data3
-
        };
 
     await ctx.stub.putState(patientId,Buffer.from(JSON.stringify(data))); 
 
-    console.log('Patient Data added To the ledger Succesfully..');
+    console.log('Patient-PHC Request added To the ledger Succesfully..');
     
   }
 
@@ -47,4 +43,4 @@ async deleteData(ctx,patientId) {
    
 }
 
-module.exports=referral;
+module.exports=request;
