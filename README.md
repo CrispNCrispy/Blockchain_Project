@@ -1,3 +1,7 @@
-# Blockchain Project: E-Referral of a PHC to a government hosital using Hyperledger Fabric
+# Blockchain Project: E-Referral of a patient from a PHC to a government hosital using Hyperledger Fabric
 
-##Status: Currently undergoing
+## Status: Currently undergoing
+
+### Installation Instructions
+
+### Network Details
