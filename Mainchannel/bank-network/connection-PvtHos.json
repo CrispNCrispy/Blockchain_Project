@@ -1,0 +1,50 @@
+{
+    "name": "first-network-PvtHos",
+    "version": "1.0.0",
+    "client": {
+        "organization": "PvtHos",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "PvtHos": {
+            "mspid": "PvtHosMSP",
+            "peers": [
+                "peer0.PvtHos.example.com"
+                
+            ],
+            "certificateAuthorities": [
+                "ca.PvtHos.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.PvtHos.example.com": {
+            "url": "grpcs://localhost:10051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/PvtHos.example.com/tlsca/tlsca.PvtHos.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.PvtHos.example.com"
+            }
+        },
+ 
+    },
+    "certificateAuthorities": {
+        "ca.PvtHos.example.com": {
+            "url": "https://localhost:10054",
+            "caName": "ca-PvtHos",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/PvtHos.example.com/tlsca/tlsca.PvtHos.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

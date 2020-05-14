@@ -1,0 +1,50 @@
+{
+    "name": "first-network-Research",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Research",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Research": {
+            "mspid": "ResearchMSP",
+            "peers": [
+                "peer0.Research.example.com"
+               
+            ],
+            "certificateAuthorities": [
+                "ca.Research.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.Research.example.com": {
+            "url": "grpcs://localhost:11051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/Research.example.com/tlsca/tlsca.Research.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.Research.example.com"
+            }
+        },
+
+    },
+    "certificateAuthorities": {
+        "ca.Research.example.com": {
+            "url": "https://localhost:11054",
+            "caName": "ca-Research",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/Research.example.com/tlsca/tlsca.Research.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

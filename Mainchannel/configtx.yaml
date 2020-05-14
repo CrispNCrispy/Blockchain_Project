@@ -1,0 +1,245 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+Organizations:
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('OrdererMSP.admin')"
+
+    - &Patient
+        Name: PatientMSP
+        ID: PatientMSP
+        MSPDir: crypto-config/peerOrganizations/patient.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('PAtientMSP.admin', 'PatientMSP.peer', 'PatientMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('PatientMSP.admin', 'PatientMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('PatientMSP.admin')"
+        AnchorPeers:
+            - Host: peer0.patient.example.com
+              Port: 7051
+
+    - &GovtHos
+        Name: GovtHosMSP
+        ID: GovtHosMSP
+        MSPDir: crypto-config/peerOrganizations/govthos.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('GovtHosMSP.admin', 'GovtHosMSP.peer', 'GovtHosMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('GovtHosMSP.admin', 'GovtHosMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('GovtHosMSP.admin')"
+        AnchorPeers:
+            - Host: peer0.govthos.example.com
+              Port: 8051
+
+    - &PHC
+        Name: PHCMSP
+        ID: PHCMSP
+        MSPDir: crypto-config/peerOrganizations/phc.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('PHCMSP.admin', 'PHCMSP.peer', 'PHCMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('PHCMSP.admin', 'PHCMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('PHCMSP.admin')" 
+        AnchorPeers:
+            - Host: peer0.phc.example.com
+              Port: 9051
+
+    - &PvtHos
+        Name: PvtHosMSP
+        ID: PvtHosMSP
+        MSPDir: crypto-config/peerOrganizations/pvthos.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('PvtHosMSP.admin', 'PvtHosMSP.peer', 'PvtHosMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('PvtHosMSP.admin', 'PvtHosMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('PvtHosMSP.admin')" 
+        AnchorPeers:
+            - Host: peer0.pvthos.example.com
+              Port: 10051
+
+    - &Research
+        Name: ResearchMSP
+        ID: ResearchMSP
+        MSPDir: crypto-config/peerOrganizations/research.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('ResearchMSP.admin', 'ResearchMSP.peer', 'ResearchMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('ResearchMSP.admin', 'ResearchMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('ResearchMSP.admin')" 
+        AnchorPeers:
+            - Host: peer0.research.example.com
+              Port: 11051
+              
+    - &Insurance
+        Name: InsuranceMSP
+        ID: InsuranceMSP
+        MSPDir: crypto-config/peerOrganizations/insurance.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('InsuranceMSP.admin', 'InsuranceMSP.peer', 'InsuranceMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('InsuranceMSP.admin', 'InsuranceMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('InsuranceMSP.admin')" 
+        AnchorPeers:
+            - Host: peer0.insurance.example.com
+              Port: 12051
+
+Capabilities:
+    Channel: &ChannelCapabilities
+        V1_4_2: true
+    Orderer: &OrdererCapabilities
+        V1_4_2: true
+    Application: &ApplicationCapabilities
+        V1_4_2: true
+        V1_3: false
+        V1_2: false
+        V1_1: false
+
+Application: &ApplicationDefaults
+    Organizations:
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+
+    Capabilities:
+        <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+    OrdererType: solo
+    Addresses:
+        - orderer.example.com:7050
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+
+    Kafka:
+        Brokers:
+            - 127.0.0.1:9092
+
+    Organizations:
+
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+    Capabilities:
+        <<: *ChannelCapabilities
+
+Profiles:
+
+    OrdererGenesis:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Patient
+                    - *GovtHos
+                    - *PHC
+                    - *PvtHos
+                    - *Insurance
+                    - *Research 
+    ChannelAll:
+        Consortium: SampleConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                    - *Patient
+                    - *GovtHos
+                    - *PHC
+                    - *PvtHos
+                    - *Insurance
+                    - *Research 
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Channel13:
+        Consortium: SampleConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                    - *Patient
+                    - *GovtHos
+                    - *PHC
+            Capabilities:
+                <<: *ApplicationCapabilities
