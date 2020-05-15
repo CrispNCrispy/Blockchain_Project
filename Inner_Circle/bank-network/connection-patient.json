@@ -1,0 +1,49 @@
+{
+    "name": "first-network-patient",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Patient",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Patient": {
+            "mspid": "PatientMSP",
+            "peers": [
+                "peer0.patient.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.patient.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.patient.example.com": {
+            "url": "grpcs://localhost:7051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/patient.example.com/tlsca/tlsca.patient.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.patient.example.com"
+            }
+        }
+        
+    },
+    "certificateAuthorities": {
+        "ca.patient.example.com": {
+            "url": "https://localhost:7054",
+            "caName": "ca-patient",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/patient.example.com/tlsca/tlsca.patient.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "name": "first-network-govthos",
+    "version": "1.0.0",
+    "client": {
+        "organization": "GovtHos",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "GovtHos": {
+            "mspid": "GovtHosMSP",
+            "peers": [
+                "peer0.govthos.example.com"
+                
+            ],
+            "certificateAuthorities": [
+                "ca.govthos.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.govthos.example.com": {
+            "url": "grpcs://localhost:8051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/govthos.example.com/tlsca/tlsca.govthos.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.govthos.example.com"
+            }
+        }
+        
+    },
+    "certificateAuthorities": {
+        "ca.govthos.example.com": {
+            "url": "https://localhost:8054",
+            "caName": "ca-govthos",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/govthos.example.com/tlsca/tlsca.govthos.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

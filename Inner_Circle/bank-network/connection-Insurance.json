@@ -1,0 +1,50 @@
+{
+    "name": "first-network-Insurance",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Insurance",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Insurance": {
+            "mspid": "InsuranceMSP",
+            "peers": [
+                "peer0.Insurance.example.com"
+    
+            ],
+            "certificateAuthorities": [
+                "ca.Insurance.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.Insurance.example.com": {
+            "url": "grpcs://localhost:12051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/Insurance.example.com/tlsca/tlsca.Insurance.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.Insurance.example.com"
+            }
+        },
+
+    },
+    "certificateAuthorities": {
+        "ca.Insurance.example.com": {
+            "url": "https://localhost:12054",
+            "caName": "ca-Insurance",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/Insurance.example.com/tlsca/tlsca.Insurance.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}
