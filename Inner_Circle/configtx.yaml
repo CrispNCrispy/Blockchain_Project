@@ -74,60 +74,6 @@ Organizations:
             - Host: peer0.phc.example.com
               Port: 9051
 
-    - &PvtHos
-        Name: PvtHosMSP
-        ID: PvtHosMSP
-        MSPDir: crypto-config/peerOrganizations/pvthos.example.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('PvtHosMSP.admin', 'PvtHosMSP.peer', 'PvtHosMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('PvtHosMSP.admin', 'PvtHosMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('PvtHosMSP.admin')" 
-        AnchorPeers:
-            - Host: peer0.pvthos.example.com
-              Port: 10051
-
-    - &Research
-        Name: ResearchMSP
-        ID: ResearchMSP
-        MSPDir: crypto-config/peerOrganizations/research.example.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('ResearchMSP.admin', 'ResearchMSP.peer', 'ResearchMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('ResearchMSP.admin', 'ResearchMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('ResearchMSP.admin')" 
-        AnchorPeers:
-            - Host: peer0.research.example.com
-              Port: 11051
-              
-    - &Insurance
-        Name: InsuranceMSP
-        ID: InsuranceMSP
-        MSPDir: crypto-config/peerOrganizations/insurance.example.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('InsuranceMSP.admin', 'InsuranceMSP.peer', 'InsuranceMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('InsuranceMSP.admin', 'InsuranceMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('InsuranceMSP.admin')" 
-        AnchorPeers:
-            - Host: peer0.insurance.example.com
-              Port: 12051
-
 Capabilities:
     Channel: &ChannelCapabilities
         V1_4_2: true
@@ -215,23 +161,6 @@ Profiles:
                     - *Patient
                     - *GovtHos
                     - *PHC
-                    - *PvtHos
-                    - *Insurance
-                    - *Research 
-    ChannelAll:
-        Consortium: SampleConsortium
-        <<: *ChannelDefaults
-        Application:
-            <<: *ApplicationDefaults
-            Organizations:
-                    - *Patient
-                    - *GovtHos
-                    - *PHC
-                    - *PvtHos
-                    - *Insurance
-                    - *Research 
-            Capabilities:
-                <<: *ApplicationCapabilities
     Channel13:
         Consortium: SampleConsortium
         <<: *ChannelDefaults

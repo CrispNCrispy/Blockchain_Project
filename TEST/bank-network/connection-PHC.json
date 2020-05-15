@@ -1,0 +1,50 @@
+{
+    "name": "first-network-PHC",
+    "version": "1.0.0",
+    "client": {
+        "organization": "PHC",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "PHC": {
+            "mspid": "PHCMSP",
+            "peers": [
+                "peer0.PHC.example.com"
+                
+            ],
+            "certificateAuthorities": [
+                "ca.PHC.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.PHC.example.com": {
+            "url": "grpcs://localhost:9051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/PHC.example.com/tlsca/tlsca.PHC.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.PHC.example.com"
+            }
+        }
+
+    },
+    "certificateAuthorities": {
+        "ca.PHC.example.com": {
+            "url": "https://localhost:9054",
+            "caName": "ca-PHC",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/PHC.example.com/tlsca/tlsca.PHC.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}
