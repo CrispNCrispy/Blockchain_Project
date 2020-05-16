@@ -17,42 +17,15 @@ echo "##########################################################"
 echo "#########  Generating Orderer Genesis block ##############"
 echo "##########################################################"
 ../bin/configtxgen -profile OrdererGenesis -outputBlock ./channel-artifacts/genesis.block
-export CHANNEL_ONE_NAME=channelall
-export CHANNEL_ONE_PROFILE=ChannelAll
-export CHANNEL_TWO_NAME=channel13
-export CHANNEL_TWO_PROFILE=Channel13
+export CHANNEL_NAME=channel13
+export CHANNEL_PROFILE=Channel13
 
 echo
 echo "#################################################################"
-echo "#######    Generating channelall and channel13  #################"
+echo "##################    Generating channel13  #####################"
 echo "#################################################################"
 
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputCreateChannelTx ./channel-artifacts/${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME
-
-../bin/configtxgen -profile ${CHANNEL_TWO_PROFILE} -outputCreateChannelTx ./channel-artifacts/${CHANNEL_TWO_NAME}.tx -channelID $CHANNEL_TWO_NAME
-
-echo
-echo "#################################################################"
-echo "#######    Generating anchor peer update for channelall #########"
-echo "#################################################################"
-
-echo "#######    Generating anchor peer update for Patient #########"
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PatientMSPanchors_${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME -asOrg PatientMSP
-
-echo "#######    Generating anchor peer update for GovtHos #########"
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/GovtHosMSPanchors_${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME -asOrg GovtHosMSP
-
-echo "#######    Generating anchor peer update for PHC #########"
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PHCMSPanchors_${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME -asOrg PHCMSP
-
-echo "#######    Generating anchor peer update for PvtHos #########"
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PvtHosMSPanchors_${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME -asOrg PvtHosMSP
-
-echo "#######    Generating anchor peer update for Research #########"
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/ResearchMSPanchors_${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME -asOrg ResearchMSP
-
-echo "#######    Generating anchor peer update for Insurance #########"
-../bin/configtxgen -profile ${CHANNEL_ONE_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/InsuranceMSPanchors_${CHANNEL_ONE_NAME}.tx -channelID $CHANNEL_ONE_NAME -asOrg InsuranceMSP
+../bin/configtxgen -profile ${CHANNEL_PROFILE} -outputCreateChannelTx ./channel-artifacts/${CHANNEL_NAME}.tx -channelID $CHANNEL_NAME
 
 echo
 echo "#################################################################"
@@ -60,11 +33,10 @@ echo "#######    Generating anchor peer update for channel13  #########"
 echo "#################################################################"
 
 echo "#######    Generating anchor peer update for Patient #########"
-../bin/configtxgen -profile ${CHANNEL_TWO_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PatientMSPanchors_${CHANNEL_TWO_NAME}.tx -channelID $CHANNEL_TWO_NAME -asOrg PatientMSP
+../bin/configtxgen -profile ${CHANNEL_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PatientMSPanchors_${CHANNEL_NAME}.tx -channelID $CHANNEL_NAME -asOrg PatientMSP
 
 echo "#######    Generating anchor peer update for GovtHos #### "
-../bin/configtxgen -profile ${CHANNEL_TWO_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/GovtHosMSPanchors_${CHANNEL_TWO_NAME}.tx -channelID $CHANNEL_TWO_NAME -asOrg GovtHosMSP
-echo "#######    Generating anchor peer update for PHC #########"
-../bin/configtxgen -profile ${CHANNEL_TWO_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PHCMSPanchors_${CHANNEL_TWO_NAME}.tx -channelID $CHANNEL_TWO_NAME -asOrg PHCMSP
+../bin/configtxgen -profile ${CHANNEL_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/GovtHosMSPanchors_${CHANNEL_NAME}.tx -channelID $CHANNEL_NAME -asOrg GovtHosMSP
 
-docker-compose up -d
+echo "#######    Generating anchor peer update for PHC #########"
+../bin/configtxgen -profile ${CHANNEL_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PHCMSPanchors_${CHANNEL_NAME}.tx -channelID $CHANNEL_NAME -asOrg PHCMSP
