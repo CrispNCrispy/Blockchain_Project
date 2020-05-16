@@ -66,5 +66,3 @@ echo "#######    Generating anchor peer update for GovtHos #### "
 ../bin/configtxgen -profile ${CHANNEL_TWO_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/GovtHosMSPanchors_${CHANNEL_TWO_NAME}.tx -channelID $CHANNEL_TWO_NAME -asOrg GovtHosMSP
 echo "#######    Generating anchor peer update for PHC #########"
 ../bin/configtxgen -profile ${CHANNEL_TWO_PROFILE} -outputAnchorPeersUpdate ./channel-artifacts/PHCMSPanchors_${CHANNEL_TWO_NAME}.tx -channelID $CHANNEL_TWO_NAME -asOrg PHCMSP
-
-docker-compose up -d

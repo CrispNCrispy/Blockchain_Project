@@ -1,5 +1,12 @@
 #!/bin/bash
 
+export BYFN_CA1_PRIVATE_KEY=$(cd crypto-config/peerOrganizations/patient.example.com/ca && ls *_sk)
+export BYFN_CA2_PRIVATE_KEY=$(cd crypto-config/peerOrganizations/govthos.example.com/ca && ls *_sk)
+export BYFN_CA3_PRIVATE_KEY=$(cd crypto-config/peerOrganizations/phc.example.com/ca && ls *_sk)
+export BYFN_CA4_PRIVATE_KEY=$(cd crypto-config/peerOrganizations/pvthos.example.com/ca && ls *_sk)
+export BYFN_CA5_PRIVATE_KEY=$(cd crypto-config/peerOrganizations/research.example.com/ca && ls *_sk)
+export BYFN_CA6_PRIVATE_KEY=$(cd crypto-config/peerOrganizations/insurance.example.com/ca && ls *_sk)
+
 docker-compose -f docker-compose.yaml -f docker-compose-ca.yaml up -d
 docker ps -a
 
