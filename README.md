@@ -11,14 +11,14 @@
 - Clone the 'Blockchain_Project' repo into the downloaded fabric-samples directory.
 
 
-### Network Details
-## Two Networks included: Inner_Circle and Mainchannel
+## Network Details
+### Two Networks included: Inner_Circle and Mainchannel
 Main channel conists of 6 organizations: Patient, PHC, Government Hospital, Private Hospital, Research and Insurance with 2 channeles, one for the first three only, and one for all of them.
 Inner_Circle only uses 3 organizations: Patient, PHC and Government Hospital, with one channel for all the three.
 
-## Status of Mainchannel:
+### Status of Mainchannel:
 Network created with a makeshift smart contract to experiment with authentication systems. Deprecated for now, using <b>Inner Circle</b> for further project.
 
-## Status of Inner_Cirlce: 
+### Status of Inner_Cirlce: 
 Network setup complete, works only with v 1.4.2. 
 Next task in line: Creation of smart contract.
