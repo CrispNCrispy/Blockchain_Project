@@ -23,5 +23,6 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Consists of 10 continers on network startup: 3 peers (one for each org), 3 CLIs (one for each org), 3 CAs (one for each org) and 1 orderer peer (assumed to be owened by a 4th organization). 
 - User and Admin credential creations js files have been done.
 - Work to be done:
+Set up dev mode for smart contract debugging (currently not working due to some bugs).
 1/5 Smart contract methods completed.
-0/5 Application js files completed.
+0/5 Application js files completed (First one completed, but peers are not committing, fixing the bug).
