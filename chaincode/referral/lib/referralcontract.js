@@ -51,7 +51,7 @@ class ReferralContract extends Contract {
     }
 
     /**
-     * Register User
+     * Register Patient
      *
      * @param {Context} ctx the transaction context
      * @param {String} patientFirstName first name of patient
@@ -64,9 +64,9 @@ class ReferralContract extends Contract {
      * @param {String} patientAddress Email of patient
      * @param {String} patientBloodGroup Blood Group of patient
     */
-    async registerPatient(ctx, patientFirstName, patientID, patientLastName, patientDOB, patientEmail,patientNumber1, patientNumber2, patientAddress, patientBloodGroup) {
+    async registerPatient(ctx, patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup) {
         // create an instance of the paper
-        let patient = Patient.createInstance(ctx, patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup) ;
+        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup);
 
         // Smart contract, rather than paper, moves paper into ISSUED state
         patient.setRegistered();
@@ -75,7 +75,7 @@ class ReferralContract extends Contract {
         await ctx.patientList.addPatient(patient);
 
         // Must return a serialized paper to caller of smart contract
-        return patient;
+        return patient.toBuffer();
     }
 
 

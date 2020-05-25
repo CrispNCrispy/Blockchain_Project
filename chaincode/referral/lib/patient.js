@@ -83,7 +83,7 @@ class Patient extends State {
     }
 
     static fromBuffer(buffer) {
-        return Patient.deserialize(buffer);
+        return Patient.deserialize(Buffer.from(JSON.parse(buffer)));
     }
 
     toBuffer() {
@@ -102,7 +102,7 @@ class Patient extends State {
      * Factory method to create a commercial paper object
      */
     static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup) {
-        return new Patient({ patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup });
+        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup});
     }
 
     static getClass() {

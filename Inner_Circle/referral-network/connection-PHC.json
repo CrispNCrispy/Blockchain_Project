@@ -40,7 +40,7 @@
             "url": "https://localhost:9054",
             "caName": "ca-phc",
             "tlsCACerts": {
-                "path": "../../crypto-config/peerOrganizations/PHC.example.com/tlsca/tlsca.PHC.example.com-cert.pem"
+                "path": "../..crypto-config/peerOrganizations/PHC.example.com/tlsca/tlsca.PHC.example.com-cert.pem"
             },
             "httpOptions": {
                 "verify": false
