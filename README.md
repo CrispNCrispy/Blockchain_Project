@@ -35,21 +35,14 @@ Transaction 5 and Application 5 - Treatment at Government Hospital
 
 ### Network Set-up Instructions
 - Open terminal in the Inner_Circle folder
-- (Optional) Run the startpart1.sh file if you want to re-generate the cryptogen material and the channel artifacts, not needed because default material and artifacts already exist.
-Terminal Command: ./startpart1.sh
-- Run the byfn.sh file to bring up the network. It will create the channel, add the peers to the channel, install the referral contract, instantiate the referral contract and run the instantiate function in the contract.
-Terminal Command: ./byfn.sh
+- (Optional) Run the startpart1.sh file if you want to re-generate the cryptogen material and the channel artifacts, not needed because default material and artifacts already exist. Terminal Command: ./startpart1.sh
+- Run the byfn.sh file to bring up the network. It will create the channel, add the peers to the channel, install the referral contract, instantiate the referral contract and run the instantiate function in the contract. Terminal Command: ./byfn.sh
 
 ### Example of invoking a transaction - Transaction 1, registration of patient on the blockchain
-- Go to Inner_Circle/application/Patient
-Terminal command (if inside Inner_Circle folder): cd application/patient
-- Run the npm install command to download all the packages and dependencies
-Terminal command: npm install
-- Run the enrollAdmin.js file to obtain admin wallet credentials (certificate and private key)
-Terminal command: node enrollAdmin.js
-- Run the registerUser.js file to obtain user 1 wallet credentials (certificate and private key)
-Terminal Command: node registerUser.js
-- Run the first transaction application.
-Terminal Command: node Transactions/RegisterPatient.js
+- Go to Inner_Circle/application/Patient. Terminal command (if inside Inner_Circle folder): cd application/patient
+- Run the npm install command to download all the packages and dependencies. Terminal command: npm install
+- Run the enrollAdmin.js file to obtain admin wallet credentials (certificate and private key). Terminal command: node enrollAdmin.js
+- Run the registerUser.js file to obtain user 1 wallet credentials (certificate and private key). Terminal Command: node registerUser.js
+- Run the first transaction application. Terminal Command: node Transactions/RegisterPatient.js
 
 
