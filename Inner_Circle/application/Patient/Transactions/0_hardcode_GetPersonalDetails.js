@@ -11,22 +11,6 @@ const Patient = require('../../../../chaincode/referral/lib/patient.js')
 
 async function main() {
     try {
-
-	if (process.argv.length != 11) {
-            console.log('Requires 9 arguments: patient first name, patient ID, patient last name, patient DOB, patient email, patient number 1, patient number 2 (optional), patient address and patient blood group');
-            return;
-        }
-
-        const patientFirstName = process.argv[2];
-        const patientID = process.argv[3];
-        const patientLastName = process.argv[4];
-        const patientDOB = process.argv[5];
-	const patientEmail = process.argv[6];
-	const patientNumber1 = process.argv[7];
-	const patientNumber2 = process.argv[8];
-	const patientAddress = process.argv[9];
-	const patientBloodGroup = process.argv[10];
-
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', '..', 'referral-network', 'connection-patient.json');
         let ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
@@ -43,6 +27,19 @@ async function main() {
             console.log('Run the registerUser.js application before retrying');
             return;
         }
+
+	/*
+        if (process.argv.length != 2) {
+            console.log('Require 8 (or 9) arguments: patient first name, patient ID, patient last name, patient DOB, patient email, patient number 1, patient number 2 (optional), patient address and patient blood group');
+            return;
+        }
+
+        //const patientFirstName = process.argv[2];
+        //const patientID = process.argv[3]
+
+INCLUDE THIS WHEN WE GET INPUTS FROM FRONT-END
+
+*/
 
         // Create a new gateway for connecting to our peer node.
         
@@ -63,14 +60,23 @@ async function main() {
 
 	console.log('Contract Received!');
 
-        const response = await contract.submitTransaction('registerPatient', patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup);
+        const response = await contract.submitTransaction('getPersonalDetails', 'Chris', 12345);
      
-	console.log('Transaction has been submitted');
+	console.log('Query has been submitted');
 
 	let patient = Patient.fromBuffer(response);
 
-        console.log(`${patient.patientFirstName} with ID ${patient.patientID} successfully created`);
-        console.log('Transaction complete.');
+	patient.patientDOB=patient.patientDOB.toISOString().substring(0, 10)
+
+        console.log('Patient First Name:',patient.patientFirstName);
+	console.log('Patient ID:', patient.patientID);
+	console.log('Patient Last Name:', patient.patientLastName);
+	console.log('Patient DOB:', patient.patientDOB);
+	console.log('Patient Email:', patient.patientEmail);
+	console.log('Patient Contact Number:', patient.patientNumber1);
+	console.log('Patient Alternative Contact Number:', patient.patientNumber2);
+	console.log('Patient Address:', patient.patientAddress);
+	console.log('Patient Blood Group:', patient.patientBloodGroup);
 
         // Disconnect from the gateway.
         await gateway.disconnect();

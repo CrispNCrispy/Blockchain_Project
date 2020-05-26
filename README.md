@@ -13,17 +13,20 @@ Inner_Circle only uses 3 organizations: Patient, PHC and Government Hospital, wi
 Network created with a makeshift smart contract (investment contact) to experiment with authentication systems for 6 organizations and 2 channels. Deprecated for now, using <b>Inner_Circle</b> for further project.
 
 ### Status of Inner_Cirlce: 
-Work completed:
+#### Work completed:
 - Network setup and setup files complete, works only with v 1.4.2.
 - Consists of 10 continers on network startup: 3 peers (one for each org), 3 CLIs (one for each org), 3 CAs (one for each org) and 1 orderer peer (assumed to be owned by a 4th organization). 
 - User and Admin credential creations js files have been done for all three Orgs.
 - Transaction 1 and Application 1 done - Registration of patient on blockchain
+- Peronal Details Query and application done - Displayin the personal details and status of the patient
 
-- Work to be done:
-Transaction 2 and Application 2 - Request for PHC treatment
-Transaction 3 and Application 3 - Treatment at PHC
-Transaction 4 and Application 4 - Referral from PHC to Government Hospital
-Transaction 5 and Application 5 - Treatment at Government Hospital
+#### Work to be done:
+- Transaction 2 and Application 2 - Request for PHC treatment
+- Transaction 3 and Application 3 - Treatment at PHC
+- Transaction 4 and Application 4 - Referral from PHC to Government Hospital
+- Transaction 5 and Application 5 - Treatment at Government Hospital
+- Query and application of PHC Treatment Details
+- Query and application of Govt Hosp Treatment Details 
 
 ## Usage Instructions
 
@@ -40,7 +43,7 @@ Transaction 5 and Application 5 - Treatment at Government Hospital
 
 ### Example of invoking a transaction - Transaction 1, registration of patient on the blockchain
 - Go to Inner_Circle/application/Patient. Terminal command (if inside Inner_Circle folder): cd application/patient
-- Run the npm install command to download all the packages and dependencies. Terminal command: npm install
+- Run the npm install command to download all the packages and dependencies (No need if node_modules folder already exists in the application directory). Terminal command: npm install 
 - Run the enrollAdmin.js file to obtain admin wallet credentials (certificate and private key). Terminal command: node enrollAdmin.js
 - Run the registerUser.js file to obtain user 1 wallet credentials (certificate and private key). Terminal Command: node registerUser.js
 - Run the first transaction application. Terminal Command: node Transactions/RegisterPatient.js

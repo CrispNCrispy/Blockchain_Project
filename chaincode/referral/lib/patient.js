@@ -9,11 +9,11 @@ const State = require('./../ledger-api/state.js');
 
 // Enumerate patient state values
 const pState = {
-    REGISTERED: 1,
-    REQUESTED: 2,
-    TREATED: 3,
-    REFERRED:4,
-    REFERRED_AND_TREATED:5
+    REGISTERED: "Registered",
+    REQUESTED: "Requested for PHC visit",
+    TREATED: "PHC check-up completed",
+    REFERRED: "Referred to Hospital",
+    REFERRED_AND_TREATED: "Hospital treatment/check-up completed"
 };
 
 /**

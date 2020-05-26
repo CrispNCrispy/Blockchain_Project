@@ -11,22 +11,6 @@ const Patient = require('../../../../chaincode/referral/lib/patient.js')
 
 async function main() {
     try {
-
-	if (process.argv.length != 11) {
-            console.log('Requires 9 arguments: patient first name, patient ID, patient last name, patient DOB, patient email, patient number 1, patient number 2 (optional), patient address and patient blood group');
-            return;
-        }
-
-        const patientFirstName = process.argv[2];
-        const patientID = process.argv[3];
-        const patientLastName = process.argv[4];
-        const patientDOB = process.argv[5];
-	const patientEmail = process.argv[6];
-	const patientNumber1 = process.argv[7];
-	const patientNumber2 = process.argv[8];
-	const patientAddress = process.argv[9];
-	const patientBloodGroup = process.argv[10];
-
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', '..', 'referral-network', 'connection-patient.json');
         let ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
@@ -63,7 +47,7 @@ async function main() {
 
 	console.log('Contract Received!');
 
-        const response = await contract.submitTransaction('registerPatient', patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup);
+        const response = await contract.submitTransaction('registerPatient', 'Chris', 12345, 'Pinto', '06-12-1997', 'cpinto4u@gmail.com', 9986981226, 8762626326, 'Kadri, Mangalore', 'A+');
      
 	console.log('Transaction has been submitted');
 

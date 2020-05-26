@@ -74,8 +74,19 @@ class ReferralContract extends Contract {
         // Add the paper to the list of all similar commercial papers in the ledger world state
         await ctx.patientList.addPatient(patient);
 
-        // Must return a serialized paper to caller of smart contract
+        // return serialized patient details to caller of smart contract
         return patient.toBuffer();
+    }
+
+    async getPersonalDetails(ctx,patientFirstName, patientID) {
+        // make keys from the two required parameters, patientFirstName and patientID
+        let patientKey = Patient.makeKey([patientFirstName, patientID])
+
+        // use the stub method to get the patient details from the blockchain
+        let patient = await ctx.patientList.getPatient(patientKey)
+
+        //return serialized patient details
+        return patient.toBuffer()
     }
 
 
