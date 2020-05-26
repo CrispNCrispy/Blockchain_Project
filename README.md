@@ -19,7 +19,7 @@ Network created with a makeshift smart contract (investment contact) to experime
 - User and Admin credential creations js files have been done for all three Orgs.
 - Transaction 1 and Application 1 done - Registration of patient on blockchain
 - Peronal Details Query and application done - Displayin the personal details and status of the patient
-
+<br>
 #### Work to be done:
 - Transaction 2 and Application 2 - Request for PHC treatment
 - Transaction 3 and Application 3 - Treatment at PHC
