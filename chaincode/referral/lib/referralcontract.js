@@ -65,10 +65,13 @@ class ReferralContract extends Contract {
      * @param {String} patientBloodGroup Blood Group of patient
     */
     async registerPatient(ctx, patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup) {
-        const  requestDetails = JSON.stringify({requestReason: 'N/A', requestTimestamp: 'N/A'})
+        const requestDetails = JSON.stringify({requestReason: 'N/A', requestTimestamp: 'N/A'});
+        const treatmentPHC = JSON.stringify({treatingOrganization: 'N/A', treatedByContact: 'N/A', treatedByEmail: 'N/A', treatedByUserID: 'N/A', treatedByLocalID: 'N/A', treatmentSummary: 'N/A', treatmentTimestamp: 'N/A', treatmentTxID: 'N/A'});
+        const treatmentGovtHos = JSON.stringify({treatingOrganization: 'N/A', treatedByContact: 'N/A', treatedByEmail: 'N/A', treatedByUserID: 'N/A', treatedByLocalID: 'N/A', treatmentSummary: 'N/A', treatmentTimestamp: 'N/A',  treatmentTxID: 'N/A'});
+        const referralDetails = JSON.stringify({referralID: 'N/A', referringOrganization: 'N/A', referredByContact: 'N/A', referredByEmail: 'N/A', referredByUserID: 'N/A', referredByLocalID: 'N/A', referredToContact: 'N/A', referredToEmail: 'N/A', referredToUserID: 'N/A', referredToLocalID: 'N/A', referralReason: 'N/A', referralNote: 'N/A', referralPriorityFlag: 'N/A', referralTimestamp: 'N/A', referralTxID: 'N/A'})
 
         // create an instance of the paper
-        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails);
+        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralDetails);
 
         // Smart contract, rather than paper, moves paper into ISSUED state
         patient.setRegistered();
@@ -105,7 +108,103 @@ class ReferralContract extends Contract {
         return patient.toBuffer()
     }
 
-    async getPersonalDetails(ctx,patientFirstName, patientID) {
+    async PHCTreatment(ctx, patientFirstName, patientID, treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary) {
+        // make keys from the two required parameters, patientFirstName and patientID
+        let patientKey = Patient.makeKey([patientFirstName, patientID]);
+
+        // use the stub method to get the patient details from the blockchain
+        let patient = await ctx.patientList.getPatient(patientKey);
+
+        if (patient.isRegistered()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' needs to request for PHC check-up first');
+        }
+
+        if (patient.isTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as treated');
+        }
+
+        if (patient.isReferredAndTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as referred and treated. Please create a new PHC check-up request');
+        }
+
+        if (patient.isReferred()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has been marked as referred');
+        }
+
+        if (patient.isRequested()) {
+            patient.setTreated();
+            patient.treatAtPHC(treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
+        }
+
+        await ctx.patientList.updatePatient(patient)
+        return patient.toBuffer()
+    }
+
+    async referToGovtHos(ctx, patientFirstName, patientID, referralID, referringOrganization, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralReason, referralNote, referralPriorityFlag) {
+        // make keys from the two required parameters, patientFirstName and patientID
+        let patientKey = Patient.makeKey([patientFirstName, patientID]);
+
+        // use the stub method to get the patient details from the blockchain
+        let patient = await ctx.patientList.getPatient(patientKey);
+
+        if (patient.isRegistered()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' needs to request for PHC check-up first');
+        }
+
+        if (patient.isTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as treated by PHC.');
+        }
+
+        if (patient.isReferredAndTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as referred and treated. Request for PHC check-up first.');
+        }
+
+        if (patient.isReferred()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already requested for a referral');
+        }
+
+        if (patient.isRequested()) {
+            patient.setReferred();
+            patient.referToGovtHos(referralID, referringOrganization, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralReason, referralNote, referralPriorityFlag, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
+        }
+
+        await ctx.patientList.updatePatient(patient)
+        return patient.toBuffer()
+    }
+
+    async GovtHosTreatment(ctx, patientFirstName, patientID, treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary) {
+        // make keys from the two required parameters, patientFirstName and patientID
+        let patientKey = Patient.makeKey([patientFirstName, patientID]);
+
+        // use the stub method to get the patient details from the blockchain
+        let patient = await ctx.patientList.getPatient(patientKey);
+
+        if (patient.isRegistered()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' needs to request for PHC check-up first');
+        }
+
+        if (patient.isTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as treated by PHC.');
+        }
+
+        if (patient.isReferredAndTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as referred and treated.');
+        }
+
+        if (patient.isRequested()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has currently requested for a check-up at the PHC');
+        }
+
+        if (patient.isReferred()) {
+            patient.setReferredAndTreated();
+            patient.treatAtGovtHos(treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
+        }
+
+        await ctx.patientList.updatePatient(patient)
+        return patient.toBuffer()
+    }
+
+    async getDetails(ctx,patientFirstName, patientID) {
         // make keys from the two required parameters, patientFirstName and patientID
         let patientKey = Patient.makeKey([patientFirstName, patientID]);
 
@@ -115,7 +214,6 @@ class ReferralContract extends Contract {
         //return serialized patient details
         return patient.toBuffer();
     }
-
 
 }
 

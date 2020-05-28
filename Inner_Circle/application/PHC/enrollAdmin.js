@@ -17,8 +17,10 @@ async function main() {
 
         // Create a new CA client for interacting with the CA.
         const caInfo = ccp.certificateAuthorities['ca.PHC.example.com'];
+
         const caTLSCACertsPath = path.resolve(__dirname, caInfo.tlsCACerts.path);
         const caTLSCACerts = fs.readFileSync(caTLSCACertsPath);
+
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
         // Create a new file system based wallet for managing identities.

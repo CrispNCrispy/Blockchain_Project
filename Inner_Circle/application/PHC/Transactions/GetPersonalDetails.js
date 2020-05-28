@@ -56,7 +56,7 @@ async function main() {
 
 	console.log('Contract Received!');
 
-        const response = await contract.submitTransaction('getPersonalDetails', patientFirstName, patientID);
+        const response = await contract.submitTransaction('getDetails', patientFirstName, patientID);
      
 	console.log('Query has been submitted');
 
@@ -71,6 +71,7 @@ async function main() {
 	console.log('Patient Alternative Contact Number:', patient.patientNumber2);
 	console.log('Patient Address:', patient.patientAddress);
 	console.log('Patient Blood Group:', patient.patientBloodGroup);
+	console.log('Patient Current State:', patient.currentState);
 
         // Disconnect from the gateway.
         await gateway.disconnect();

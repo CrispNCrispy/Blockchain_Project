@@ -89,6 +89,52 @@ class Patient extends State {
         this.requestDetails = JSON.stringify(this.requestDetails)
     }
 
+    treatAtPHC(treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary, treatmentTimestamp, treatmentTxID) {
+        this.treatmentPHC = JSON.parse(this.treatmentPHC)
+        this.treatmentPHC.treatingOrganization = treatingOrganization;
+        this.treatmentPHC.treatedByContact = treatedByContact;
+        this.treatmentPHC.treatedByEmail = treatedByEmail;
+        this.treatmentPHC.treatedByUserID = treatedByUserID;
+        this.treatmentPHC.treatedByLocalID = treatedByLocalID;
+        this.treatmentPHC.treatmentSummary = treatmentSummary;
+        this.treatmentPHC.treatmentTimestamp = treatmentTimestamp;
+        this.treatmentPHC.treatmentTxID = treatmentTxID;
+        this.treatmentPHC = JSON.stringify(this.treatmentPHC);
+    }
+
+    referToGovtHos(referralID, referringOrganization, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralReason, referralNote, referralPriorityFlag, referralTimestamp, referralTxID) {
+        this.referralDetails = JSON.parse(this.referralDetails);
+        this.referralDetails.referralID = referralID;
+        this.referralDetails.referringOrganization = referringOrganization;
+        this.referralDetails.referredByContact = referredByContact;
+        this.referralDetails.referredByEmail = referredByEmail;
+        this.referralDetails.referredByUserID = referredByUserID;
+        this.referralDetails.referredByLocalID = referredByLocalID;
+        this.referralDetails.referredToContact = referredToContact;
+        this.referralDetails.referredToEmail = referredToEmail;
+        this.referralDetails.referredToUserID = referredToUserID;
+        this.referralDetails.referredToLocalID = referredToLocalID;
+        this.referralDetails.referralReason = referralReason;
+        this.referralDetails.referralNote = referralNote;
+        this.referralDetails.referralPriorityFlag = referralPriorityFlag;
+        this.referralDetails.referralTimestamp = referralTimestamp;
+        this.referralDetails.referralTxID = referralTxID;
+        this.referralDetails = JSON.stringify(this.referralDetails);
+    }
+
+    treatAtGovtHos(treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary, treatmentTimestamp, treatmentTxID) {
+        this.treatmentGovtHos = JSON.parse(this.treatmentGovtHos)
+        this.treatmentGovtHos.treatingOrganization = treatingOrganization;
+        this.treatmentGovtHos.treatedByContact = treatedByContact;
+        this.treatmentGovtHos.treatedByEmail = treatedByEmail;
+        this.treatmentGovtHos.treatedByUserID = treatedByUserID;
+        this.treatmentGovtHos.treatedByLocalID = treatedByLocalID;
+        this.treatmentGovtHos.treatmentSummary = treatmentSummary;
+        this.treatmentGovtHos.treatmentTimestamp = treatmentTimestamp;
+        this.treatmentGovtHos.treatmentTxID = treatmentTxID;
+        this.treatmentGovtHos = JSON.stringify(this.treatmentGovtHos);
+    }
+
     static fromBuffer(buffer) {
         return Patient.deserialize(Buffer.from(JSON.parse(buffer)));
     }
@@ -108,8 +154,8 @@ class Patient extends State {
     /**
      * Factory method to create a commercial paper object
      */
-    static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails) {
-        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails});
+    static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralDetails) {
+        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralDetails});
     }
 
     static getClass() {

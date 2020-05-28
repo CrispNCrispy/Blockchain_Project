@@ -56,7 +56,7 @@ async function main() {
 
 	console.log('Contract Received!');
 
-        const response = await contract.submitTransaction('getPersonalDetails', patientFirstName, patientID);
+        const response = await contract.submitTransaction('getDetails', patientFirstName, patientID);
      
 	console.log('Query has been submitted');
 

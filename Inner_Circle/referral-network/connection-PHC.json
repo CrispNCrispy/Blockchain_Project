@@ -15,22 +15,22 @@
         "PHC": {
             "mspid": "PHCMSP",
             "peers": [
-                "peer0.PHC.example.com"
+                "peer0.phc.example.com"
                 
             ],
             "certificateAuthorities": [
-                "ca.PHC.example.com"
+                "ca.phc.example.com"
             ]
         }
     },
     "peers": {
-        "peer0.PHC.example.com": {
+        "peer0.phc.example.com": {
             "url": "grpcs://localhost:9051",
             "tlsCACerts": {
-                "path": "../../crypto-config/peerOrganizations/PHC.example.com/tlsca/tlsca.PHC.example.com-cert.pem"
+                "path": "../../crypto-config/peerOrganizations/phc.example.com/tlsca/tlsca.phc.example.com-cert.pem"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.PHC.example.com"
+                "ssl-target-name-override": "peer0.phc.example.com"
             }
         }
 
@@ -40,7 +40,7 @@
             "url": "https://localhost:9054",
             "caName": "ca-phc",
             "tlsCACerts": {
-                "path": "../..crypto-config/peerOrganizations/PHC.example.com/tlsca/tlsca.PHC.example.com-cert.pem"
+                "path": "../../crypto-config/peerOrganizations/phc.example.com/tlsca/tlsca.phc.example.com-cert.pem"
             },
             "httpOptions": {
                 "verify": false

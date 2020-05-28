@@ -11,6 +11,15 @@ const Patient = require('../../../../chaincode/referral/lib/patient.js')
 
 async function main() {
     try {
+
+	if (process.argv.length != 4) {
+            console.log('Requires 2 arguments: patient first name and patient ID');
+            return;
+        }
+
+        const patientFirstName = process.argv[2];
+        const patientID = process.argv[3];
+
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', '..', 'referral-network', 'connection-patient.json');
         let ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
@@ -47,14 +56,27 @@ async function main() {
 
 	console.log('Contract Received!');
 
-        const response = await contract.submitTransaction('registerPatient', 'Chris', 12345, 'Pinto', '06-12-1997', 'cpinto4u@gmail.com', 9986981226, 8762626326, 'Kadri, Mangalore', 'A+');
+        const response = await contract.submitTransaction('getDetails', patientFirstName, patientID);
      
-	console.log('Transaction has been submitted');
+	console.log('Query has been submitted');
 
 	let patient = Patient.fromBuffer(response);
 
-        console.log(`${patient.patientFirstName} with ID ${patient.patientID} successfully created`);
-        console.log('Transaction complete.');
+        console.log('Patient First Name:',patient.patientFirstName);
+	console.log('Patient ID:', parseInt(patient.patientID));
+	console.log('Patient Last Name:', patient.patientLastName);
+	console.log('Patient DOB:', patient.patientDOB);
+	console.log('Patient Email:', patient.patientEmail);
+	console.log('Patient Contact Number:', patient.patientNumber1);
+	console.log('Patient Alternative Contact Number:', patient.patientNumber2);
+	console.log('Patient Address:', patient.patientAddress);
+	console.log('Patient Blood Group:', patient.patientBloodGroup);
+	console.log('Patient Current State:', patient.currentState);
+	console.log('Patient Request Details: ', patient.requestDetails);
+	console.log('Patient PHC Treatment Details: ', patient.treatmentPHC);
+	console.log('Patient Referral Details: ', patient.referralDetails);
+	console.log('Patient Government Hospital Details: ', patient.treatmentGovtHos);
+	
 
         // Disconnect from the gateway.
         await gateway.disconnect();

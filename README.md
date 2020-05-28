@@ -17,15 +17,16 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Consists of 10 continers on network startup: 3 peers (one for each org), 3 CLIs (one for each org), 3 CAs (one for each org) and 1 orderer peer (assumed to be owned by a 4th organization). 
 - User and Admin credential creations js files have been done for all three Orgs.
 - Transaction 1 and Application 1 done - Registration of patient on blockchain
-- Peronal Details Query and application done - Displayin the personal details and status of the patient<br>
-
-#### Work to be done:
 - Transaction 2 and Application 2 - Request for PHC treatment
 - Transaction 3 and Application 3 - Treatment at PHC
 - Transaction 4 and Application 4 - Referral from PHC to Government Hospital
 - Transaction 5 and Application 5 - Treatment at Government Hospital
-- Query and application of PHC Treatment Details
-- Query and application of Govt Hosp Treatment Details 
+- Query 1 - Peronal Details Query and application - Displaying the personal details and status of the patient
+<br>
+
+#### Work to be done:
+- Query 2 - To display all details and its application - Formatting of output remaining
+<br>
 
 ## Usage Instructions
 
@@ -40,11 +41,11 @@ Network created with a makeshift smart contract (investment contact) to experime
 - (Optional) Run the startpart1.sh file if you want to re-generate the cryptogen material and the channel artifacts, not needed because default material and artifacts already exist. Terminal Command: ./startpart1.sh
 - Run the byfn.sh file to bring up the network. It will create the channel, add the peers to the channel, install the referral contract, instantiate the referral contract and run the instantiate function in the contract. Terminal Command: ./byfn.sh
 
-### Example of invoking a transaction - Transaction 1, registration of patient on the blockchain
+### Example of invoking a transaction - Transaction 1, registration of patient on the blockchain (Note: Detailed README.md of all the applications is present in the applications directory)
 - Go to Inner_Circle/application/Patient. Terminal command (if inside Inner_Circle folder): cd application/patient
 - Run the npm install command to download all the packages and dependencies (No need if node_modules folder already exists in the application directory). Terminal command: npm install 
 - Run the enrollAdmin.js file to obtain admin wallet credentials (certificate and private key). Terminal command: node enrollAdmin.js
 - Run the registerUser.js file to obtain user 1 wallet credentials (certificate and private key). Terminal Command: node registerUser.js
-- Run the first transaction application. Terminal Command: node Transactions/RegisterPatient.js
+- Run the first transaction application. Terminal Command (Run from the Patient Directory): node Transactions/RegisterPatient.js Chris 12345 Pinto 1997-12-06 cpinto4u@gmail.com 9986981226 8762626326 Kadri,\ Mangalore A+ (note: on terminal "\ " would indicate a space in the text fields passed to the application)
 
 
