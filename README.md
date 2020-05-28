@@ -22,11 +22,11 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Transaction 4 and Application 4 - Referral from PHC to Government Hospital
 - Transaction 5 and Application 5 - Treatment at Government Hospital
 - Query 1 - Peronal Details Query and application - Displaying the personal details and status of the patient
+- Query 2 - To display all details and its application - Formatting of output remaining
 <br>
 
 #### Work to be done:
-- Query 2 - To display all details and its application - Formatting of output remaining
-<br>
+- None as of right now 
 
 ## Usage Instructions
 

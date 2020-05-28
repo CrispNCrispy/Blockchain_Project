@@ -72,10 +72,10 @@ async function main() {
 	console.log('Patient Address:', patient.patientAddress);
 	console.log('Patient Blood Group:', patient.patientBloodGroup);
 	console.log('Patient Current State:', patient.currentState);
-	console.log('Patient Request Details: ', patient.requestDetails);
-	console.log('Patient PHC Treatment Details: ', patient.treatmentPHC);
-	console.log('Patient Referral Details: ', patient.referralDetails);
-	console.log('Patient Government Hospital Details: ', patient.treatmentGovtHos);
+	console.log('Patient Request Details: ', JSON.parse(patient.requestDetails));
+	console.log('Patient PHC Treatment Details: ', JSON.parse(patient.treatmentPHC));
+	console.log('Patient Referral Details: ', JSON.parse(patient.referralDetails));
+	console.log('Patient Government Hospital Details: ', JSON.parse(patient.treatmentGovtHos));
 	
 
         // Disconnect from the gateway.
