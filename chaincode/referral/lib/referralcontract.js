@@ -65,8 +65,10 @@ class ReferralContract extends Contract {
      * @param {String} patientBloodGroup Blood Group of patient
     */
     async registerPatient(ctx, patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup) {
+        const  requestDetails = JSON.stringify({requestReason: 'N/A', requestTimestamp: 'N/A'})
+
         // create an instance of the paper
-        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup);
+        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails);
 
         // Smart contract, rather than paper, moves paper into ISSUED state
         patient.setRegistered();
@@ -78,15 +80,40 @@ class ReferralContract extends Contract {
         return patient.toBuffer();
     }
 
-    async getPersonalDetails(ctx,patientFirstName, patientID) {
+    async requestPHC(ctx, patientFirstName, patientID, requestReason) {
+
         // make keys from the two required parameters, patientFirstName and patientID
-        let patientKey = Patient.makeKey([patientFirstName, patientID])
+        let patientKey = Patient.makeKey([patientFirstName, patientID]);
 
         // use the stub method to get the patient details from the blockchain
-        let patient = await ctx.patientList.getPatient(patientKey)
+        let patient = await ctx.patientList.getPatient(patientKey);
+
+        if (patient.isRequested()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already requested for a check-up');
+        }
+
+        if (patient.isReferred()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has been referred to a hospital');
+        }
+
+        if (patient.isRegistered() || patient.isTreated() || patient.isReferredAndTreated()) {
+            patient.setRequested();
+            patient.createRequest(requestReason, ctx.stub.getTxTimestamp());
+        }
+
+        await ctx.patientList.updatePatient(patient)
+        return patient.toBuffer()
+    }
+
+    async getPersonalDetails(ctx,patientFirstName, patientID) {
+        // make keys from the two required parameters, patientFirstName and patientID
+        let patientKey = Patient.makeKey([patientFirstName, patientID]);
+
+        // use the stub method to get the patient details from the blockchain
+        let patient = await ctx.patientList.getPatient(patientKey);
 
         //return serialized patient details
-        return patient.toBuffer()
+        return patient.toBuffer();
     }
 
 

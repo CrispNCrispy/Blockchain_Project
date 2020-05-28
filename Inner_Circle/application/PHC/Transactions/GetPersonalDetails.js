@@ -18,7 +18,7 @@ async function main() {
         }
 
         const patientFirstName = process.argv[2];
-        const patientID = parseInt(process.argv[3]);
+        const patientID = process.argv[3];
 
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', '..', 'referral-network', 'connection-patient.json');

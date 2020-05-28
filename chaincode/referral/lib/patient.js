@@ -82,6 +82,13 @@ class Patient extends State {
         return this.currentState === pState.REFERRED_AND_TREATED;
     }
 
+    createRequest(requestReason, requestTimestamp) {
+        this.requestDetails = JSON.parse(this.requestDetails)
+        this.requestDetails.requestReason = requestReason;
+        this.requestDetails.requestTimestamp = requestTimestamp;
+        this.requestDetails = JSON.stringify(this.requestDetails)
+    }
+
     static fromBuffer(buffer) {
         return Patient.deserialize(Buffer.from(JSON.parse(buffer)));
     }
@@ -101,8 +108,8 @@ class Patient extends State {
     /**
      * Factory method to create a commercial paper object
      */
-    static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup) {
-        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup});
+    static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails) {
+        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails});
     }
 
     static getClass() {

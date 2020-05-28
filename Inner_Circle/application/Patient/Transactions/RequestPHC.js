@@ -9,16 +9,23 @@ const fs = require('fs');
 const path = require('path');
 const Patient = require('../../../../chaincode/referral/lib/patient.js')
 
+//function for converting hyperledger fabric timestamp to ISO datetime
+function toDate(timestamp) {
+  const milliseconds = (timestamp.seconds.low + ((timestamp.nanos / 1000000) / 1000)) * 1000;
+  return new Date(milliseconds);
+}
+
 async function main() {
     try {
 
-	if (process.argv.length != 4) {
-            console.log('Requires 2 arguments: patient first name and patient ID');
+	if (process.argv.length != 5) {
+            console.log('Requires 3 arguments: Patient first name, patient ID and Reason for PHC request');
             return;
         }
 
         const patientFirstName = process.argv[2];
         const patientID = process.argv[3];
+	const requestReason = process.argv[4];
 
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', '..', 'referral-network', 'connection-patient.json');
@@ -56,21 +63,15 @@ async function main() {
 
 	console.log('Contract Received!');
 
-        const response = await contract.submitTransaction('getPersonalDetails', patientFirstName, patientID);
+        const response = await contract.submitTransaction('requestPHC', patientFirstName, patientID, requestReason);
      
-	console.log('Query has been submitted');
+	console.log('Transaction has been submitted');
 
 	let patient = Patient.fromBuffer(response);
+        const reason = JSON.parse(patient.requestDetails).requestReason;
+        const time = toDate(JSON.parse(patient.requestDetails).requestTimestamp);
 
-        console.log('Patient First Name:',patient.patientFirstName);
-	console.log('Patient ID:', parseInt(patient.patientID));
-	console.log('Patient Last Name:', patient.patientLastName);
-	console.log('Patient DOB:', patient.patientDOB);
-	console.log('Patient Email:', patient.patientEmail);
-	console.log('Patient Contact Number:', patient.patientNumber1);
-	console.log('Patient Alternative Contact Number:', patient.patientNumber2);
-	console.log('Patient Address:', patient.patientAddress);
-	console.log('Patient Blood Group:', patient.patientBloodGroup);
+	console.log('Request for PHC successful for patient ' + patient.patientFirstName + ' with Patient ID ' + patient.patientID + ' with request reason: ' + reason + '.' + ' Date and Time of request: ' + time);
 
         // Disconnect from the gateway.
         await gateway.disconnect();
