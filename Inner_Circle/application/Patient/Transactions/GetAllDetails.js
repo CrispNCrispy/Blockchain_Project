@@ -9,6 +9,11 @@ const fs = require('fs');
 const path = require('path');
 const Patient = require('../../../../chaincode/referral/lib/patient.js')
 
+function toDate(timestamp) {
+  const milliseconds = (timestamp.seconds.low + ((timestamp.nanos / 1000000) / 1000)) * 1000;
+  return new Date(milliseconds);
+}
+
 async function main() {
     try {
 
@@ -72,9 +77,13 @@ async function main() {
 	console.log('Patient Address:', patient.patientAddress);
 	console.log('Patient Blood Group:', patient.patientBloodGroup);
 	console.log('Patient Current State:', patient.currentState);
+	console.log('\n');
 	console.log('Patient Request Details: ', JSON.parse(patient.requestDetails));
+	console.log('\n');
 	console.log('Patient PHC Treatment Details: ', JSON.parse(patient.treatmentPHC));
+	console.log('\n');
 	console.log('Patient Referral Details: ', JSON.parse(patient.referralDetails));
+	console.log('\n');
 	console.log('Patient Government Hospital Details: ', JSON.parse(patient.treatmentGovtHos));
 	
 

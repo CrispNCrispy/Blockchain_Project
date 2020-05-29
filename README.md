@@ -23,10 +23,11 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Transaction 5 and Application 5 - Treatment at Government Hospital
 - Query 1 - Peronal Details Query and application - Displaying the personal details and status of the patient
 - Query 2 - To display all details and its application - Formatting of output remaining
-<br>
 
 #### Work to be done:
-- None as of right now 
+- Edit GetAllDetails.js to format Timestamp better
+- Create couchdb container 
+- Implement data masking
 
 ## Usage Instructions
 
