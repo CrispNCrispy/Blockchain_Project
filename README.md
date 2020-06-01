@@ -19,13 +19,13 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Transaction 1 and Application 1 done - Registration of patient on blockchain
 - Transaction 2 and Application 2 - Request for PHC treatment
 - Transaction 3 and Application 3 - Treatment at PHC
-- Transaction 4 and Application 4 - Referral from PHC to Government Hospital
-- Transaction 5 and Application 5 - Treatment at Government Hospital
+- Transaction 4 and Application 4 - Referral Issue by PHC
+- Transaction 5 and Application 5 - Referral Acceptance by Government Hospital
+- Transaction 6 and Application 6 - Treatment at Government Hospital
 - Query 1 - Peronal Details Query and application - Displaying the personal details and status of the patient
-- Query 2 - To display all details and its application - Formatting of output remaining
+- Query 2 - All Latest Details Query and applicaiton - To display all current world state details of the patient
 
 #### Work to be done:
-- Edit GetAllDetails.js to format Timestamp better
 - Create couchdb container 
 - Implement data masking
 

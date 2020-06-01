@@ -68,10 +68,11 @@ class ReferralContract extends Contract {
         const requestDetails = JSON.stringify({requestReason: 'N/A', requestTimestamp: 'N/A'});
         const treatmentPHC = JSON.stringify({treatingOrganization: 'N/A', treatedByContact: 'N/A', treatedByEmail: 'N/A', treatedByUserID: 'N/A', treatedByLocalID: 'N/A', treatmentSummary: 'N/A', treatmentTimestamp: 'N/A', treatmentTxID: 'N/A'});
         const treatmentGovtHos = JSON.stringify({treatingOrganization: 'N/A', treatedByContact: 'N/A', treatedByEmail: 'N/A', treatedByUserID: 'N/A', treatedByLocalID: 'N/A', treatmentSummary: 'N/A', treatmentTimestamp: 'N/A',  treatmentTxID: 'N/A'});
-        const referralDetails = JSON.stringify({referralID: 'N/A', referringOrganization: 'N/A', referredByContact: 'N/A', referredByEmail: 'N/A', referredByUserID: 'N/A', referredByLocalID: 'N/A', referredToContact: 'N/A', referredToEmail: 'N/A', referredToUserID: 'N/A', referredToLocalID: 'N/A', referralReason: 'N/A', referralNote: 'N/A', referralPriorityFlag: 'N/A', referralTimestamp: 'N/A', referralTxID: 'N/A'})
+        const referralIssueDetails = JSON.stringify({referralID: 'N/A', PHC: 'N/A', referredByContact: 'N/A', referredByEmail: 'N/A', referredByUserID: 'N/A', referredByLocalID: 'N/A', referralLocalPatientID: 'N/A', referralLocalNodeID: 'N/A', referralReason: 'N/A', referralNote: 'N/A', referralPriorityFlag: 'N/A', referralIssueTimestamp: 'N/A', referralIssueTxID: 'N/A'})
+        const referralAcceptanceDetails = JSON.stringify({GovtHos: 'N/A', referredToContact: 'N/A', referredToEmail: 'N/A', referredToUserID: 'N/A', referredToLocalID: 'N/A', referralAcceptanceTimestamp: 'N/A', referralAcceptanceTxID: 'N/A'})
 
         // create an instance of the paper
-        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralDetails);
+        let patient = Patient.createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralIssueDetails, referralAcceptanceDetails);
 
         // Smart contract, rather than paper, moves paper into ISSUED state
         patient.setRegistered();
@@ -96,7 +97,11 @@ class ReferralContract extends Contract {
         }
 
         if (patient.isReferred()) {
-            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has been referred to a hospital');
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been issued a referral by a PHC');
+        }
+
+        if (patient.isReferredAccepted()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been successfully referred to a hospital');
         }
 
         if (patient.isRegistered() || patient.isTreated() || patient.isReferredAndTreated()) {
@@ -128,7 +133,11 @@ class ReferralContract extends Contract {
         }
 
         if (patient.isReferred()) {
-            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has been marked as referred');
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has been marked as referral issued');
+        }
+
+        if (patient.isReferredAccepted()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has been marked as referral accepted');
         }
 
         if (patient.isRequested()) {
@@ -140,7 +149,7 @@ class ReferralContract extends Contract {
         return patient.toBuffer()
     }
 
-    async referToGovtHos(ctx, patientFirstName, patientID, referralID, referringOrganization, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralReason, referralNote, referralPriorityFlag) {
+    async referToGovtHos(ctx, patientFirstName, patientID, referralID, PHC, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referralLocalPatientID, referralLocalNodeID, referralReason, referralNote, referralPriorityFlag) {
         // make keys from the two required parameters, patientFirstName and patientID
         let patientKey = Patient.makeKey([patientFirstName, patientID]);
 
@@ -160,12 +169,52 @@ class ReferralContract extends Contract {
         }
 
         if (patient.isReferred()) {
-            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already requested for a referral');
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been issued by the PHC a referral');
+        }
+
+        if (patient.isReferredAccepted()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been accepted by a hospital for the referral');
         }
 
         if (patient.isRequested()) {
             patient.setReferred();
-            patient.referToGovtHos(referralID, referringOrganization, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralReason, referralNote, referralPriorityFlag, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
+            patient.referToGovtHos(referralID, PHC, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referralLocalPatientID, referralLocalNodeID, referralReason, referralNote, referralPriorityFlag, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
+        }
+
+        await ctx.patientList.updatePatient(patient)
+        return patient.toBuffer()
+    }
+
+    async acceptReferral(ctx, patientFirstName, patientID, GovtHos, referredToContact, referredToEmail, referredToUserID, referredToLocalID) {
+        // make keys from the two required parameters, patientFirstName and patientID
+        let patientKey = Patient.makeKey([patientFirstName, patientID]);
+
+        // use the stub method to get the patient details from the blockchain
+        let patient = await ctx.patientList.getPatient(patientKey);
+
+        if (patient.isRegistered()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' needs to request for PHC check-up first');
+        }
+
+        if (patient.isTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as treated by PHC.');
+        }
+
+        if (patient.isReferredAndTreated()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been marked as referred and treated. Request for PHC check-up first.');
+        }
+
+        if (patient.isRequested()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' is marked as "requested for a check-up", a referral needs to be issued first before accepting');
+        }
+
+        if (patient.isReferredAccepted()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' has already been accepted by a hospital');
+        }
+
+        if (patient.isReferred()) {
+            patient.setReferredAccepted();
+            patient.acceptReferral(GovtHos, referredToContact, referredToEmail, referredToUserID, referredToLocalID, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
         }
 
         await ctx.patientList.updatePatient(patient)
@@ -196,6 +245,10 @@ class ReferralContract extends Contract {
         }
 
         if (patient.isReferred()) {
+            throw new Error('Patient ' + patientFirstName + ' with ID ' + patientID + ' needs to be accepted by the hospital before being marked as treated');
+        }
+
+        if (patient.isReferredAccepted()) {
             patient.setReferredAndTreated();
             patient.treatAtGovtHos(treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary, ctx.stub.getTxTimestamp(), ctx.stub.getTxID());
         }

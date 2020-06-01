@@ -119,43 +119,62 @@ async function main() {
 	console.log('Treatment Transaction ID: ' + treatmentTxID2)
 
 	console.log('=================================');
-	const referralID = JSON.parse(patient.referralDetails).referralID;
-	const referringOrganization = JSON.parse(patient.referralDetails).referringOrganization;
-	const referredByContact = JSON.parse(patient.referralDetails).referredByContact;
-	const referredByEmail = JSON.parse(patient.referralDetails).referredByEmail;
-	const referredByUserID = JSON.parse(patient.referralDetails).referredByUserID;
-	const referredByLocalID = JSON.parse(patient.referralDetails).referredByLocalID;
-	const referredToContact = JSON.parse(patient.referralDetails).referredToContact;
-	const referredToEmail = JSON.parse(patient.referralDetails).referredToEmail;
-	const referredToUserID = JSON.parse(patient.referralDetails).referredToUserID;
-	const referredToLocalID = JSON.parse(patient.referralDetails).referredToLocalID;
-	const referralReason = JSON.parse(patient.referralDetails).referralReason;
-	const referralNote = JSON.parse(patient.referralDetails).referralNote;
-	const referralPriorityFlag = JSON.parse(patient.referralDetails).referralPriorityFlag;
+	const referralID = JSON.parse(patient.referralIssueDetails).referralID;
+	const PHC = JSON.parse(patient.referralIssueDetails).PHC;
+	const referredByContact = JSON.parse(patient.referralIssueDetails).referredByContact;
+	const referredByEmail = JSON.parse(patient.referralIssueDetails).referredByEmail;
+	const referredByUserID = JSON.parse(patient.referralIssueDetails).referredByUserID;
+	const referredByLocalID = JSON.parse(patient.referralIssueDetails).referredByLocalID;
+	const referralLocalPatientID = JSON.parse(patient.referralIssueDetails).referralLocalPatientID;
+	const referralLocalNodeID = JSON.parse(patient.referralIssueDetails).referralLocalNodeID;
+	const referralReason = JSON.parse(patient.referralIssueDetails).referralReason;
+	const referralNote = JSON.parse(patient.referralIssueDetails).referralNote;
+	const referralPriorityFlag = JSON.parse(patient.referralIssueDetails).referralPriorityFlag;
 	let time3;
-	if(typeof JSON.parse(patient.referralDetails).referralTimestamp == 'object') {
-		time3 = toDate(JSON.parse(patient.referralDetails).referralTimestamp);
+	if(typeof JSON.parse(patient.referralIssueDetails).referralIssueTimestamp == 'object') {
+		time3 = toDate(JSON.parse(patient.referralIssueDetails).referralIssueTimestamp);
 	}
 	else {
-		time3 = JSON.parse(patient.referralDetails).referralTimestamp;
+		time3 = JSON.parse(patient.referralIssueDetails).referralIssueTimestamp;
 	}
-	const referralTxID3 = JSON.parse(patient.referralDetails).referralTxID;
-	console.log('Latest Patient Referral Details:');
+	const referralIssueTxID3 = JSON.parse(patient.referralIssueDetails).referralIssueTxID;
+	console.log('Latest Patient Referral Issue Details:');
 	console.log('Referral ID: ' + referralID);
-	console.log('Referring Organization: ' + referringOrganization);
+	console.log('PHC: ' + PHC);
 	console.log('Referred By Contact: ' + referredByContact);
 	console.log('Referred By Email: ' + referredByEmail);
 	console.log('Referred By UserID: ' + referredByUserID);
 	console.log('Referred By LocalID: ' + referredByLocalID);
-	console.log('Referred To Contact: ' + referredToContact);
-	console.log('Referred To Email: ' + referredToEmail);
-	console.log('Referred To UserID: ' + referredToUserID);
-	console.log('Referral To LocalID: ' + referredToLocalID);
+	console.log('Referral Local Patient ID: ' + referralLocalPatientID);
+	console.log('Referred Local Node ID: ' + referralLocalNodeID);
 	console.log('Referral Reason: ' + referralReason);
 	console.log('Referral Note: ' + referralNote);
 	console.log('Referral Priority Flag: ' + referralPriorityFlag);
 	console.log('Referral Date and Time: ' + time3);
-	console.log('Referral Transaction ID: ' + referralTxID3);
+	console.log('Referral Transaction ID: ' + referralIssueTxID3);
+
+	console.log('=================================');
+	const GovtHos = JSON.parse(patient.referralAcceptanceDetails).GovtHos;
+	const referredToContact = JSON.parse(patient.referralAcceptanceDetails).referredToContact;
+	const referredToEmail = JSON.parse(patient.referralAcceptanceDetails).referredToEmail;
+	const referredToUserID = JSON.parse(patient.referralAcceptanceDetails).referredToUserID;
+	const referredToLocalID = JSON.parse(patient.referralAcceptanceDetails).referredToLocalID;
+	let time32;
+	if(typeof JSON.parse(patient.referralAcceptanceDetails).referralAcceptanceTimestamp == 'object') {
+		time32 = toDate(JSON.parse(patient.referralAcceptanceDetails).referralAcceptanceTimestamp);
+	}
+	else {
+		time32 = JSON.parse(patient.referralAcceptanceDetails).referralAcceptanceTimestamp;
+	}
+	const referralAcceptanceTxID = JSON.parse(patient.referralAcceptanceDetails).referralAcceptanceTxID;
+	console.log('Latest Patient Referral Acceptance Details:');
+	console.log('Government Hospital: ' + GovtHos);
+	console.log('Referred To Contact: ' + referredToContact);
+	console.log('Referred To Email: ' + referredToEmail);
+	console.log('Referred To UserID: ' + referredToUserID);
+	console.log('Referred To LocalID: ' + referredToLocalID);
+	console.log('Referral Date and Time: ' + time32);
+	console.log('Referral Transaction ID: ' + referralAcceptanceTxID);
 
 	console.log('=================================');
 	const treatingOrganization4 = JSON.parse(patient.treatmentGovtHos).treatingOrganization;

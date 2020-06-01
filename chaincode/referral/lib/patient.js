@@ -10,9 +10,10 @@ const State = require('./../ledger-api/state.js');
 // Enumerate patient state values
 const pState = {
     REGISTERED: "Registered",
-    REQUESTED: "Requested for PHC visit",
-    TREATED: "PHC check-up completed",
-    REFERRED: "Referred to Hospital",
+    REQUESTED: "Requested for PHC Visit",
+    TREATED: "PHC Check-up Completed",
+    REFERRED: "Referred to Hospital, Waiting for Acceptance",
+    REFERRED_ACCEPTED: "Referral Accepted by Hospital",
     REFERRED_AND_TREATED: "Hospital treatment/check-up completed"
 };
 
@@ -58,6 +59,10 @@ class Patient extends State {
         this.currentState = pState.REFERRED;
     }
 
+    setReferredAccepted() {
+        this.currentState = pState.REFERRED_ACCEPTED;
+    }
+
     setReferredAndTreated() {
         this.currentState = pState.REFERRED_AND_TREATED;
     }
@@ -76,6 +81,10 @@ class Patient extends State {
 
     isReferred() {
         return this.currentState === pState.REFERRED;
+    }
+
+    isReferredAccepted() {
+        return this.currentState === pState.REFERRED_ACCEPTED;
     }
 
     isReferredAndTreated() {
@@ -102,24 +111,34 @@ class Patient extends State {
         this.treatmentPHC = JSON.stringify(this.treatmentPHC);
     }
 
-    referToGovtHos(referralID, referringOrganization, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralReason, referralNote, referralPriorityFlag, referralTimestamp, referralTxID) {
-        this.referralDetails = JSON.parse(this.referralDetails);
-        this.referralDetails.referralID = referralID;
-        this.referralDetails.referringOrganization = referringOrganization;
-        this.referralDetails.referredByContact = referredByContact;
-        this.referralDetails.referredByEmail = referredByEmail;
-        this.referralDetails.referredByUserID = referredByUserID;
-        this.referralDetails.referredByLocalID = referredByLocalID;
-        this.referralDetails.referredToContact = referredToContact;
-        this.referralDetails.referredToEmail = referredToEmail;
-        this.referralDetails.referredToUserID = referredToUserID;
-        this.referralDetails.referredToLocalID = referredToLocalID;
-        this.referralDetails.referralReason = referralReason;
-        this.referralDetails.referralNote = referralNote;
-        this.referralDetails.referralPriorityFlag = referralPriorityFlag;
-        this.referralDetails.referralTimestamp = referralTimestamp;
-        this.referralDetails.referralTxID = referralTxID;
-        this.referralDetails = JSON.stringify(this.referralDetails);
+    referToGovtHos(referralID, PHC, referredByContact, referredByEmail, referredByUserID, referredByLocalID, referralLocalPatientID, referralLocalNodeID, referralReason, referralNote, referralPriorityFlag, referralIssueTimestamp, referralIssueTxID) {
+        this.referralIssueDetails = JSON.parse(this.referralIssueDetails);
+        this.referralIssueDetails.referralID = referralID;
+        this.referralIssueDetails.PHC = PHC;
+        this.referralIssueDetails.referredByContact = referredByContact;
+        this.referralIssueDetails.referredByEmail = referredByEmail;
+        this.referralIssueDetails.referredByUserID = referredByUserID;
+        this.referralIssueDetails.referredByLocalID = referredByLocalID;
+        this.referralIssueDetails.referralLocalPatientID = referralLocalPatientID
+        this.referralIssueDetails.referralLocalNodeID = referralLocalNodeID;
+        this.referralIssueDetails.referralReason = referralReason;
+        this.referralIssueDetails.referralNote = referralNote;
+        this.referralIssueDetails.referralPriorityFlag = referralPriorityFlag;
+        this.referralIssueDetails.referralIssueTimestamp = referralIssueTimestamp;
+        this.referralIssueDetails.referralIssueTxID = referralIssueTxID;
+        this.referralIssueDetails = JSON.stringify(this.referralIssueDetails);
+    }
+
+    acceptReferral(GovtHos, referredToContact, referredToEmail, referredToUserID, referredToLocalID, referralAcceptanceTimestamp, referralAcceptanceTxID) {
+        this.referralAcceptanceDetails = JSON.parse(this.referralAcceptanceDetails);
+        this.referralAcceptanceDetails.GovtHos = GovtHos;
+        this.referralAcceptanceDetails.referredToContact = referredToContact;
+        this.referralAcceptanceDetails.referredToEmail = referredToEmail;
+        this.referralAcceptanceDetails.referredToUserID = referredToUserID;
+        this.referralAcceptanceDetails.referredToLocalID = referredToLocalID;
+        this.referralAcceptanceDetails.referralAcceptanceTimestamp = referralAcceptanceTimestamp;
+        this.referralAcceptanceDetails.referralAcceptanceTxID = referralAcceptanceTxID;
+        this.referralAcceptanceDetails = JSON.stringify(this.referralAcceptanceDetails);
     }
 
     treatAtGovtHos(treatingOrganization, treatedByContact, treatedByEmail, treatedByUserID, treatedByLocalID, treatmentSummary, treatmentTimestamp, treatmentTxID) {
@@ -154,8 +173,8 @@ class Patient extends State {
     /**
      * Factory method to create a commercial paper object
      */
-    static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralDetails) {
-        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralDetails});
+    static createInstance(patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralIssueDetails, referralAcceptanceDetails) {
+        return new Patient({patientFirstName, patientID, patientLastName, patientDOB, patientEmail, patientNumber1, patientNumber2, patientAddress, patientBloodGroup, requestDetails, treatmentPHC, treatmentGovtHos, referralIssueDetails, referralAcceptanceDetails});
     }
 
     static getClass() {
