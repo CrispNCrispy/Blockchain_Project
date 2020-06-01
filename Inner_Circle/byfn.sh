@@ -8,7 +8,7 @@ docker-compose -f docker-compose.yaml -f docker-compose-ca.yaml up -d
 docker ps -a
 
 echo "Executing the script now"
-#This file creates the channel and makes the peers connect to it
+#This file creates the channel and connects the peers to it
 docker exec cliPatient scripts/script.sh
 
 echo
@@ -16,7 +16,7 @@ echo "==================================="
 echo "install chaincode referralcontract "
 echo "==================================="
 
-echo "--to peer0.Patient.example.com--"
+echo "--to peer0.patient.example.com--"
 
 docker exec \
   -e CORE_PEER_LOCALMSPID="PatientMSP" \
@@ -30,9 +30,7 @@ docker exec \
     -p /opt/gopath/src/github.com/chaincode/referral \
     -l node
 
-echo "--to peer0.GovtHospital.example.com--"
-#docker exec -e CORE_PEER_ADDRESS=peer0.govthos.example.com:8051 -e CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/govthos.example.com/peers/peer0.govthos.example.com/tls/ca.crt -e CORE_PEER_LOCALMSPID="GovtHosMSP" -e CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/govthos.example.com/users/Admin@govthos.example.com/msp cliGovtHos peer chaincode install -n referralcontract -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/referral
-
+echo "--to peer0.govthos.example.com--"
 docker exec \
   -e CORE_PEER_LOCALMSPID="GovtHosMSP" \
   -e CORE_PEER_ADDRESS=peer0.govthos.example.com:8051 \
@@ -45,9 +43,7 @@ docker exec \
     -p /opt/gopath/src/github.com/chaincode/referral \
     -l node
 
-echo "--to peer0.PHC.example.com--"
-#docker exec -e CORE_PEER_ADDRESS=peer0.phc.example.com:9051 -e CORE_PEER_TLS_ROOTCERT_FILE=opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/phc.example.com/peers/peer0.phc.example.com/tls/ca.crt -e CORE_PEER_LOCALMSPID="PHCMSP" -e CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/phc.example.com/users/Admin@phc.example.com/msp cliPHC peer chaincode install -n referralcontract -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/referral
-
+echo "--to peer0.phc.example.com--"
 docker exec \
   -e CORE_PEER_LOCALMSPID="PHCMSP" \
   -e CORE_PEER_ADDRESS=peer0.phc.example.com:9051 \

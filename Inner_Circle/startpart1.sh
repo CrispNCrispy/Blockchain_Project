@@ -16,7 +16,7 @@ echo
 echo "##########################################################"
 echo "#########  Generating Orderer Genesis block ##############"
 echo "##########################################################"
-../bin/configtxgen -profile OrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+../bin/configtxgen -profile OrdererGenesis -channelID $SYS_CHANNEL -outputBlock ./channel-artifacts/genesis.block
 export CHANNEL_NAME=channel13
 export CHANNEL_PROFILE=Channel13
 
