@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 // Utility class for ledger state
 const State = require('./../ledger-api/state.js');
 
-// Enumerate patient state values
+// Create patient state values as an object
 const pState = {
     REGISTERED: "Registered",
     REQUESTED: "Requested for PHC Visit",
@@ -31,14 +31,8 @@ class Patient extends State {
     /**
      * Basic getters and setters
     */
-    getPatientFirstName() {
-        return this.patientFirstName;
-    }
 
-    getPatientLastName() {
-        return this.patientLastName;
-    }
-    //ADD MORE SETTERS AND GETTERS!!
+    //Space to add Getters and Setters if needed
 
     /**
      * Useful methods to encapsulate patient states
@@ -46,51 +40,43 @@ class Patient extends State {
     setRegistered() {
         this.currentState = pState.REGISTERED;
     }
-
     setRequested() {
         this.currentState = pState.REQUESTED;
     }
-
     setTreated() {
         this.currentState = pState.TREATED;
     }
-
     setReferred() {
         this.currentState = pState.REFERRED;
     }
-
     setReferredAccepted() {
         this.currentState = pState.REFERRED_ACCEPTED;
     }
-
     setReferredAndTreated() {
         this.currentState = pState.REFERRED_AND_TREATED;
     }
-
     isRegistered() {
         return this.currentState === pState.REGISTERED;
     }
-
     isRequested() {
         return this.currentState === pState.REQUESTED;
     }
-
     isTreated() {
         return this.currentState === pState.TREATED;
     }
-
     isReferred() {
         return this.currentState === pState.REFERRED;
     }
-
     isReferredAccepted() {
         return this.currentState === pState.REFERRED_ACCEPTED;
     }
-
     isReferredAndTreated() {
         return this.currentState === pState.REFERRED_AND_TREATED;
     }
 
+    /**
+     * Methods involving updation of request, treatment or referral details
+     */
     createRequest(requestReason, requestTimestamp) {
         this.requestDetails = JSON.parse(this.requestDetails)
         this.requestDetails.requestReason = requestReason;
@@ -154,6 +140,9 @@ class Patient extends State {
         this.treatmentGovtHos = JSON.stringify(this.treatmentGovtHos);
     }
 
+    /**
+     * Serialize/De-serialize methods
+     */
     static fromBuffer(buffer) {
         return Patient.deserialize(Buffer.from(JSON.parse(buffer)));
     }

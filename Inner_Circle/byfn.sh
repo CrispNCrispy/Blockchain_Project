@@ -17,7 +17,6 @@ echo "install chaincode referralcontract "
 echo "==================================="
 
 echo "--to peer0.patient.example.com--"
-
 docker exec \
   -e CORE_PEER_LOCALMSPID="PatientMSP" \
   -e CORE_PEER_ADDRESS=peer0.patient.example.com:7051 \
@@ -83,7 +82,6 @@ echo "Waiting for instantiation request to be committed ..."
 sleep 10
 
 echo "Submitting instantiate transaction to smart contract on channel13"
-echo "The transaction is sent to all of the peers so that chaincode is built before receiving the following requests"
 docker exec \
   -e CORE_PEER_LOCALMSPID="PatientMSP" \
   -e CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/patient.example.com/users/Admin@patient.example.com/msp \

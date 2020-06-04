@@ -22,7 +22,7 @@ export CHANNEL_PROFILE=Channel13
 
 echo
 echo "#################################################################"
-echo "##################    Generating channel13  #####################"
+echo "####################    Generating channel13  ###################"
 echo "#################################################################"
 
 ../bin/configtxgen -profile ${CHANNEL_PROFILE} -outputCreateChannelTx ./channel-artifacts/${CHANNEL_NAME}.tx -channelID $CHANNEL_NAME

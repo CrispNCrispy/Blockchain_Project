@@ -22,7 +22,6 @@ echo "################## Patient Peer Joined and Anchor Peer Updated ###########
 
 
 echo "################## Joining GovtHos Peer to Channel ################"
-#docker exec -e "CORE_PEER_LOCALMSPID=GovtHosMSP" -e "CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/GovtHos.example.com/peers/peer0.GovtHos.example.com/tls/ca.crt" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/GovtHos.example.com/users/Admin@GovtHos.example.com/msp" -e "CORE_PEER_ADDRESS=peer0.GovtHos.example.com:7051" -it cliGovtHos bash
 CORE_PEER_LOCALMSPID="GovtHosMSP" 
 CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/govthos.example.com/peers/peer0.govthos.example.com/tls/ca.crt
 CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/govthos.example.com/users/Admin@govthos.example.com/msp
@@ -35,7 +34,6 @@ echo "################## GovtHos Peer Joined and Anchor Peer Updated ###########
 
 
 echo "################## Joining PHC Peer to Channel ################"
-#docker exec -e "CORE_PEER_LOCALMSPID=PHCMSP" -e "CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/PHC.example.com/peers/peer0.PHC.example.com/tls/ca.crt" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/PHC.example.com/users/Admin@PHC.example.com/msp" -e "CORE_PEER_ADDRESS=peer0.PHC.example.com:7051" -it cliPHC bash
 CORE_PEER_LOCALMSPID="PHCMSP" 
 CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/phc.example.com/peers/peer0.phc.example.com/tls/ca.crt
 CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/phc.example.com/users/Admin@phc.example.com/msp
@@ -47,6 +45,6 @@ peer channel update -o orderer.example.com:7050 -c channel13 -f /opt/gopath/src/
 echo "################## PHC Peer Joined and Anchor Peer Updated ################"
 
 
-echo "###############Check if channel has been created successfully #################"
+echo "############# Check if channel has been created successfully ##############"
 peer channel list
 
