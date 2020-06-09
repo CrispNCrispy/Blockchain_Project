@@ -9,11 +9,11 @@ networks:
   byfn:
 
 services:
-  ca0:  #Patient
+  ca.patient.example.org:  #Patient
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-patient
+      - FABRIC_CA_SERVER_CA_NAME=ca.patient.example.org
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.patient.example.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/${BYFN_CA1_PRIVATE_KEY}
@@ -24,15 +24,15 @@ services:
     volumes:
       - ./crypto-config/peerOrganizations/patient.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ./fabric-ca-server-config.yaml:/etc/hyperledger/fabric-ca-server/fabric-ca-server-config.yaml
-    container_name: ca_peerpatient
+    container_name: ca.patient.example.org
     networks:
       - byfn
 
-  ca1:    #govthos
+  ca.govthos.example.com:    #govthos
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-govthos
+      - FABRIC_CA_SERVER_CA_NAME=ca.govthos.example.com
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.govthos.example.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/${BYFN_CA2_PRIVATE_KEY}
@@ -43,15 +43,15 @@ services:
     volumes:
       - ./crypto-config/peerOrganizations/govthos.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ./fabric-ca-server-config.yaml:/etc/hyperledger/fabric-ca-server/fabric-ca-server-config.yaml
-    container_name: ca_peergovthos
+    container_name: ca.govthos.example.com
     networks:
       - byfn
 
-  ca3:    # phc
+  ca.phc.example.com:    # phc
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-phc
+      - FABRIC_CA_SERVER_CA_NAME=ca.phc.example.com
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.phc.example.com-cert.pem
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/${BYFN_CA3_PRIVATE_KEY}
@@ -62,7 +62,7 @@ services:
     volumes:
       - ./crypto-config/peerOrganizations/phc.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ./fabric-ca-server-config.yaml:/etc/hyperledger/fabric-ca-server/fabric-ca-server-config.yaml
-    container_name: ca_peerphc
+    container_name: ca.phc.example.com
     networks:
       - byfn
 

@@ -49,4 +49,11 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Run the registerUser.js file to obtain user 1 wallet credentials (certificate and private key). Terminal Command: node registerUser.js
 - Run the first transaction application. Terminal Command (Run from the Patient Directory): node Transactions/RegisterPatient.js Chris 12345 Pinto 1997-12-06 cpinto4u@gmail.com 9986981226 8762626326 Kadri,\ Mangalore A+ (note: on terminal "\ " would indicate a space in the text fields passed to the application)
 
+## Benchmarking: Hyperledger Caliper
+Check out the report.html in the caliper-benchmarking folder for the most recent benchmarks.
 
+#### Structure of Caliper
+There are three components, the network, the benchmark configs and the chaincode.
+- Network: There are three main directories that constitutes the network. First, the network directory (for example, fabric v1.4.2) which contains the main network config files which holds all the information about the topology - peers, orderes, chaincodes and certificate authorities. The second is the directory containing the crypto material and channel artefacts (for example, config_solo). The third is the directoy containing the docker compose files to be run.
+- Benchmark Configuration: There are two main componenets that constitutes the benchmark configuration section, the main config file and the javascript files for each transaction workload definitions. The config file contains all the information pertaining to the different transactions to be benchmarked and the processes to be observed during the benchmarking. It will also contain the paths to the javascript files for the individual transactions (workload files). The workload files are used for defining how the transactions are to be submitted through the config files. 
+- Chaincode: The chaincode can directly be copied to the caliper-benchmarks/src/fabric/scenario. The location to the chaincode has to be put the main network configuration file under the chaincodes section along with the name and version number. Ensure that the chaincode has an 'init' function. If there isn't, create an init funcion with an empty return.
