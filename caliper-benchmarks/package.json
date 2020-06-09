@@ -1,0 +1,29 @@
+{
+  "name": "caliper-benchmarks",
+  "version": "1.0.0",
+  "description": "This repository contains sample benchmarks that may be used by Caliper, a blockchain performance benchmark framework. For more information on Caliper, please see the [Caliper main repository](https://github.com/hyperledger/caliper/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperledger/caliper-benchmarks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyperledger/caliper-benchmarks/issues"
+  },
+  "homepage": "https://github.com/hyperledger/caliper-benchmarks#readme",
+  "dependencies": {
+    "@hyperledger/caliper-cli": "^0.3.0",
+    "fabric-ca-client": "^1.4.1",
+    "fabric-client": "^1.4.1",
+    "fabric-network": "^1.4.1",
+    "fabric-protos": "^2.0.0-snapshot.1",
+    "grpc": "^1.14.2"
+  },
+  "devDependencies": {}
+}

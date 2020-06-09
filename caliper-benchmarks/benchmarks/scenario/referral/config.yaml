@@ -1,0 +1,43 @@
+---
+test:
+  name: referral
+  description: This is a benchmark check for all the transactions in the referral network
+  workers:
+    type: local
+    number: 3
+  rounds:
+  - label: register
+    description: This is a benchmark check for the transactions involving the registration of a patient to the blockchain
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      txnPerBatch: 1
+      patientFirstName: Chris
+      patientLastName: Pinto
+      patientDOB: '1997-12-06'
+      patientEmail: 'cpinto4u@gmail.com'
+      patientNumber1: '9986981226'
+      patientNumber2: '8762626326'
+      patientAddress: 'Kadri, Mangalore'
+      patientBloodGroup: 'A+'
+    callback: benchmarks/scenario/referral/register.js
+  - label: query
+    description: This is a benchmark check for the transaction querying all the patient details
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+    callback: benchmarks/scenario/referral/query.js
+monitor:
+  type:
+  - docker
+  docker:
+    containers:
+    - all
+  interval: 1
