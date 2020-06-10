@@ -1,6 +1,3 @@
-/channel-artifacts/*.tx
-/channel-artifacts/*.block
-/crypto-config/*
-/ledgers
-/ledgers-backup
-/channel-artifacts/*.json
+/Inner_Circle/application/node_modules
+/caliper-benchmarks/node_modules
+
