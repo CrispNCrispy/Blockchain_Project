@@ -102,6 +102,6 @@ monitor:
   type:
   - docker
   docker:
-    containers:
+    name:
     - all
   interval: 1
