@@ -1,12 +1,13 @@
 ---
+# Note: Please always make sure number of transactions in govttreatment <= referralaccept <= referralissue <= register
 test:
   name: referral
   description: This is a benchmark check for all the transactions in the referral network
   workers:
     type: local
-    number: 3
+    number: 1
   rounds:
-  - label: register
+  - label: Register
     description: This is a benchmark check for the transactions involving the registration of a patient to the blockchain
     txNumber: 500
     rateControl:
@@ -24,7 +25,7 @@ test:
       patientAddress: 'Kadri, Mangalore'
       patientBloodGroup: 'A+'
     callback: benchmarks/scenario/referral/register.js
-  - label: query
+  - label: Query
     description: This is a benchmark check for the transaction querying all the patient details
     txNumber: 500
     rateControl:
@@ -34,6 +35,69 @@ test:
     arguments:
       patientFirstName: Chris
     callback: benchmarks/scenario/referral/query.js
+  - label: Request PHC
+    description: This is a benchmark check for the PHC request transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      requestReason: Regular check-up
+    callback: benchmarks/scenario/referral/requestPHC.js
+  - label: Refer to GovtHos
+    description: This is a benchmark check for the referral issue transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      referralID: 11111
+      PHC: ManipalPHC
+      referredByContact: 9867485974
+      referredByEmail: example@gmail.com
+      referredByUserID: 22222
+      referredByLocalID: 33333
+      referralLocalPatientID: 44444
+      referralLocalNodeID: 55555
+      referralReason: A
+      referralNote: Patient has severe internal bleeding, must be operated on immediately
+      referralPriorityFlag: E
+    callback: benchmarks/scenario/referral/referissue.js
+  - label: Accept Referral
+    description: This is a benchmark check for the referral accept transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      GovtHos: KMC, Manipal
+      referredToContact: 8672345974
+      referredToEmail: example2@gmail.com
+      referredToUserID: 66666
+      referredToLocalID: 77777
+    callback: benchmarks/scenario/referral/referaccept.js
+  - label: GovtHos Treatment
+    description: This is a benchmark check for the Government Hospital Treatment transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      treatingOrganization: KMC, Manipal
+      treatedByContact: 6429463752
+      treatedByEmail: example3@gmail.com
+      treatedByUserID: 88888
+      treatedByLocalID: 99999
+      treatmentSummary: Operated around the x y z regions and performed x y z procedure to a b c d, administered x y z drugs to control the bleeding
+    callback: benchmarks/scenario/referral/govthostreatment.js
 monitor:
   type:
   - docker

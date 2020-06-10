@@ -128,14 +128,18 @@
                 <li>DLT: &nbsp<span style="font-weight: 500;">fabric</span></li>
                 <li>Name: &nbsp<span style="font-weight: 500;">referral</span></li>
                 <li>Description: &nbsp<span style="font-weight: 500;">This is a benchmark check for all the transactions in the referral network</span></li>
-                <li>Benchmark Rounds: &nbsp<span style="font-weight: 500;">2</span></li>
+                <li>Benchmark Rounds: &nbsp<span style="font-weight: 500;">6</span></li>
                 <li><a href="#benchmarkInfo">Details</a></li>
             </ul>
             <ul>
                 <h3>&nbspBenchmark results</h3>
                 <li><a href="#benchmarksummary">Summary</a></li>
-                    <li><a href="#register">register</a></li>
-                    <li><a href="#query">query</a></li>
+                    <li><a href="#Register">Register</a></li>
+                    <li><a href="#Query">Query</a></li>
+                    <li><a href="#Request PHC">Request PHC</a></li>
+                    <li><a href="#Refer to GovtHos">Refer to GovtHos</a></li>
+                    <li><a href="#Accept Referral">Accept Referral</a></li>
+                    <li><a href="#GovtHos Treatment">GovtHos Treatment</a></li>
             </ul>
             <ul>
                 <h3>&nbspSystem under test</h3>
@@ -158,31 +162,43 @@
                     </tr>
 
                     <tr>
-                         <td>register</td> <td>498</td> <td>0</td> <td>100.5</td> <td>47.40</td> <td>10.00</td> <td>31.88</td> <td>10.1</td>
+                         <td>Register</td> <td>500</td> <td>0</td> <td>100.4</td> <td>44.69</td> <td>13.76</td> <td>31.54</td> <td>10.1</td>
                     </tr>
                     <tr>
-                         <td>query</td> <td>498</td> <td>0</td> <td>100.5</td> <td>6.21</td> <td>1.67</td> <td>4.06</td> <td>75.0</td>
+                         <td>Query</td> <td>500</td> <td>0</td> <td>100.2</td> <td>4.59</td> <td>0.97</td> <td>3.02</td> <td>84.0</td>
+                    </tr>
+                    <tr>
+                         <td>Request PHC</td> <td>500</td> <td>0</td> <td>446.4</td> <td>29.42</td> <td>6.30</td> <td>18.25</td> <td>16.5</td>
+                    </tr>
+                    <tr>
+                         <td>Refer to GovtHos</td> <td>500</td> <td>0</td> <td>437.1</td> <td>40.14</td> <td>8.81</td> <td>23.86</td> <td>12.4</td>
+                    </tr>
+                    <tr>
+                         <td>Accept Referral</td> <td>500</td> <td>0</td> <td>339.0</td> <td>46.69</td> <td>11.42</td> <td>32.70</td> <td>10.5</td>
+                    </tr>
+                    <tr>
+                         <td>GovtHos Treatment</td> <td>500</td> <td>0</td> <td>427.7</td> <td>70.56</td> <td>9.92</td> <td>44.22</td> <td>7.0</td>
                     </tr>
                 </table>
             </div>
-            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="register">
-                <h2>Benchmark round: register</h2>
+            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Register">
+                <h2>Benchmark round: Register</h2>
                 <p>This is a benchmark check for the transactions involving the registration of a patient to the blockchain</p>
                 <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
   type: fixed-rate
   opts:
     tps: 100
 </pre>
-                        <h3>Performance metrics for register</h3>
+                        <h3>Performance metrics for Register</h3>
                             <table style="min-width: 100%;">
                                 <tr>
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>register</td> <td>498</td> <td>0</td> <td>100.5</td> <td>47.40</td> <td>10.00</td> <td>31.88</td> <td>10.1</td>
+                                     <td>Register</td> <td>500</td> <td>0</td> <td>100.4</td> <td>44.69</td> <td>13.76</td> <td>31.54</td> <td>10.1</td>
                                 </tr>
                             </table>
-                        <h3>Resource utilization for register</h3>
+                        <h3>Resource utilization for Register</h3>
                             <h4>Resource monitor: docker</h4>
                             <table style="min-width: 100%;">
                                 <tr>
@@ -191,34 +207,34 @@
                                          <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [MB]</th>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>96.28</td> <td>10.04</td> <td>155</td> <td>127</td> <td>0.825</td> <td>3.58</td> <td>0.00</td> <td>0.00</td>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>97.23</td> <td>9.39</td> <td>123</td> <td>104</td> <td>0.817</td> <td>3.58</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>97.92</td> <td>9.77</td> <td>157</td> <td>122</td> <td>0.835</td> <td>3.59</td> <td>0.00</td> <td>0.00</td>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>92.23</td> <td>9.01</td> <td>169</td> <td>137</td> <td>0.821</td> <td>3.58</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>92.69</td> <td>9.93</td> <td>149</td> <td>124</td> <td>0.848</td> <td>3.60</td> <td>0.00</td> <td>0.00</td>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>95.88</td> <td>9.16</td> <td>155</td> <td>122</td> <td>0.813</td> <td>3.58</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org1.example.com</td> <td>39.31</td> <td>15.08</td> <td>440</td> <td>391</td> <td>10.1</td> <td>8.19</td> <td>15.7</td> <td>2.13</td>
+                                         <td>peer0.org1.example.com</td> <td>35.03</td> <td>14.86</td> <td>450</td> <td>395</td> <td>10.1</td> <td>7.67</td> <td>15.7</td> <td>11.1</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org3.example.com</td> <td>28.58</td> <td>15.08</td> <td>432</td> <td>387</td> <td>10.1</td> <td>7.57</td> <td>15.7</td> <td>5.01</td>
+                                         <td>peer0.org2.example.com</td> <td>33.72</td> <td>14.49</td> <td>348</td> <td>296</td> <td>10.1</td> <td>7.45</td> <td>14.8</td> <td>16.2</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org2.example.com</td> <td>40.04</td> <td>15.64</td> <td>354</td> <td>307</td> <td>10.1</td> <td>7.58</td> <td>14.9</td> <td>4.63</td>
+                                         <td>peer0.org3.example.com</td> <td>33.74</td> <td>15.07</td> <td>454</td> <td>394</td> <td>10.1</td> <td>7.47</td> <td>15.7</td> <td>9.93</td>
                                     </tr>
                                     <tr>
-                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>8.34</td> <td>8.15</td> <td>0.0000668</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>17.1</td> <td>14.0</td> <td>0.000134</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>orderer.example.com</td> <td>24.09</td> <td>4.49</td> <td>74.2</td> <td>57.9</td> <td>5.90</td> <td>17.4</td> <td>12.2</td> <td>5.87</td>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>10.6</td> <td>9.63</td> <td>0.000134</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>8.05</td> <td>7.85</td> <td>0.0000668</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>orderer.example.com</td> <td>27.70</td> <td>3.98</td> <td>68.6</td> <td>50.3</td> <td>5.89</td> <td>17.4</td> <td>12.2</td> <td>18.3</td>
                                     </tr>
                                     <tr>
-                                         <td>ca.org1.example.com</td> <td>0.02</td> <td>0.00</td> <td>23.8</td> <td>17.5</td> <td>0.0000668</td> <td>0.00</td> <td>0.00</td> <td>0.250</td>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>12.4</td> <td>10.9</td> <td>0.000134</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                 </table>
                                 </tr>
@@ -227,24 +243,24 @@
                             </div>
             </div>
 
-            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="query">
-                <h2>Benchmark round: query</h2>
+            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Query">
+                <h2>Benchmark round: Query</h2>
                 <p>This is a benchmark check for the transaction querying all the patient details</p>
                 <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
   type: fixed-rate
   opts:
     tps: 100
 </pre>
-                        <h3>Performance metrics for query</h3>
+                        <h3>Performance metrics for Query</h3>
                             <table style="min-width: 100%;">
                                 <tr>
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>query</td> <td>498</td> <td>0</td> <td>100.5</td> <td>6.21</td> <td>1.67</td> <td>4.06</td> <td>75.0</td>
+                                     <td>Query</td> <td>500</td> <td>0</td> <td>100.2</td> <td>4.59</td> <td>0.97</td> <td>3.02</td> <td>84.0</td>
                                 </tr>
                             </table>
-                        <h3>Resource utilization for query</h3>
+                        <h3>Resource utilization for Query</h3>
                             <h4>Resource monitor: docker</h4>
                             <table style="min-width: 100%;">
                                 <tr>
@@ -253,34 +269,282 @@
                                          <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [B]</th> <th>Disc Read [MB]</th>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>72.37</td> <td>29.63</td> <td>153</td> <td>127</td> <td>1.18</td> <td>0.175</td> <td>0.00</td> <td>0.813</td>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>68.41</td> <td>32.41</td> <td>116</td> <td>95.2</td> <td>1.50</td> <td>2.85</td> <td>0.00</td> <td>0.438</td>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>70.51</td> <td>31.40</td> <td>112</td> <td>89.5</td> <td>1.47</td> <td>1.83</td> <td>0.00</td> <td>2.10</td>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>63.09</td> <td>26.43</td> <td>152</td> <td>136</td> <td>1.47</td> <td>2.84</td> <td>0.00</td> <td>1.22</td>
                                     </tr>
                                     <tr>
-                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>75.21</td> <td>32.72</td> <td>103</td> <td>87.6</td> <td>1.34</td> <td>0.482</td> <td>0.00</td> <td>0.672</td>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>63.73</td> <td>32.03</td> <td>110</td> <td>85.7</td> <td>1.48</td> <td>2.84</td> <td>0.00</td> <td>1.68</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org1.example.com</td> <td>15.97</td> <td>10.11</td> <td>442</td> <td>441</td> <td>0.899</td> <td>1.98</td> <td>0.00</td> <td>2.13</td>
+                                         <td>peer0.org1.example.com</td> <td>27.36</td> <td>12.51</td> <td>452</td> <td>451</td> <td>3.53</td> <td>7.51</td> <td>0.00</td> <td>2.47</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org3.example.com</td> <td>30.39</td> <td>13.16</td> <td>433</td> <td>433</td> <td>2.51</td> <td>4.25</td> <td>0.00</td> <td>1.49</td>
+                                         <td>peer0.org2.example.com</td> <td>31.29</td> <td>12.65</td> <td>348</td> <td>348</td> <td>3.51</td> <td>7.28</td> <td>0.00</td> <td>0.578</td>
                                     </tr>
                                     <tr>
-                                         <td>peer0.org2.example.com</td> <td>19.40</td> <td>11.44</td> <td>354</td> <td>354</td> <td>1.18</td> <td>2.09</td> <td>0.00</td> <td>0.617</td>
+                                         <td>peer0.org3.example.com</td> <td>18.34</td> <td>11.05</td> <td>454</td> <td>454</td> <td>3.51</td> <td>7.28</td> <td>0.00</td> <td>0.0234</td>
                                     </tr>
                                     <tr>
-                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>8.02</td> <td>8.02</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>ca.org1.example.com</td> <td>0.84</td> <td>0.14</td> <td>11.4</td> <td>11.4</td> <td>0.000194</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>orderer.example.com</td> <td>0.05</td> <td>0.01</td> <td>73.4</td> <td>73.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>ca.org3.example.com</td> <td>0.83</td> <td>0.14</td> <td>8.90</td> <td>8.90</td> <td>0.000194</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>7.73</td> <td>7.73</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>orderer.example.com</td> <td>0.03</td> <td>0.01</td> <td>68.0</td> <td>68.0</td> <td>0.000533</td> <td>0.000277</td> <td>0.00</td> <td>0.00</td>
                                     </tr>
                                     <tr>
-                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>13.4</td> <td>13.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                         <td>ca.org2.example.com</td> <td>0.72</td> <td>0.12</td> <td>9.72</td> <td>9.72</td> <td>0.000194</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
+            </div>
+
+            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Request PHC">
+                <h2>Benchmark round: Request PHC</h2>
+                <p>This is a benchmark check for the PHC request transaction.</p>
+                <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
+  type: fixed-rate
+  opts:
+    tps: 100
+</pre>
+                        <h3>Performance metrics for Request PHC</h3>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                     <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
+                                </tr>
+                                <tr>
+                                     <td>Request PHC</td> <td>500</td> <td>0</td> <td>446.4</td> <td>29.42</td> <td>6.30</td> <td>18.25</td> <td>16.5</td>
+                                </tr>
+                            </table>
+                        <h3>Resource utilization for Request PHC</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [MB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>95.27</td> <td>8.63</td> <td>116</td> <td>105</td> <td>1.55</td> <td>3.93</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>93.43</td> <td>8.16</td> <td>136</td> <td>131</td> <td>1.54</td> <td>3.92</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>94.41</td> <td>8.14</td> <td>125</td> <td>121</td> <td>1.56</td> <td>3.93</td> <td>0.00</td> <td>0.117</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>37.20</td> <td>21.70</td> <td>453</td> <td>451</td> <td>10.5</td> <td>8.53</td> <td>15.9</td> <td>0.359</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>41.53</td> <td>22.57</td> <td>354</td> <td>350</td> <td>10.5</td> <td>8.55</td> <td>15.9</td> <td>0.305</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>48.11</td> <td>23.05</td> <td>455</td> <td>453</td> <td>10.5</td> <td>8.53</td> <td>15.6</td> <td>0.414</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>11.4</td> <td>10.8</td> <td>0.000813</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>8.90</td> <td>8.74</td> <td>0.000813</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>31.19</td> <td>4.91</td> <td>76.9</td> <td>73.2</td> <td>6.06</td> <td>18.0</td> <td>12.6</td> <td>13.1</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>9.72</td> <td>9.47</td> <td>0.000813</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
+            </div>
+
+            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Refer to GovtHos">
+                <h2>Benchmark round: Refer to GovtHos</h2>
+                <p>This is a benchmark check for the referral issue transaction.</p>
+                <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
+  type: fixed-rate
+  opts:
+    tps: 100
+</pre>
+                        <h3>Performance metrics for Refer to GovtHos</h3>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                     <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
+                                </tr>
+                                <tr>
+                                     <td>Refer to GovtHos</td> <td>500</td> <td>0</td> <td>437.1</td> <td>40.14</td> <td>8.81</td> <td>23.86</td> <td>12.4</td>
+                                </tr>
+                            </table>
+                        <h3>Resource utilization for Refer to GovtHos</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [MB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>98.97</td> <td>9.25</td> <td>169</td> <td>154</td> <td>1.80</td> <td>4.51</td> <td>0.00</td> <td>0.297</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>105.28</td> <td>9.64</td> <td>165</td> <td>155</td> <td>1.74</td> <td>4.47</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>94.26</td> <td>10.68</td> <td>153</td> <td>144</td> <td>1.76</td> <td>4.49</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>35.54</td> <td>17.43</td> <td>453</td> <td>444</td> <td>11.8</td> <td>9.81</td> <td>17.6</td> <td>0.297</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>37.02</td> <td>17.35</td> <td>354</td> <td>350</td> <td>11.8</td> <td>9.77</td> <td>17.6</td> <td>0.820</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>36.76</td> <td>17.09</td> <td>455</td> <td>448</td> <td>11.7</td> <td>9.74</td> <td>17.6</td> <td>0.219</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>10.5</td> <td>9.31</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>8.66</td> <td>8.37</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>39.99</td> <td>5.69</td> <td>78.4</td> <td>75.8</td> <td>6.70</td> <td>19.9</td> <td>13.8</td> <td>4.77</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>9.36</td> <td>8.89</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
+            </div>
+
+            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Accept Referral">
+                <h2>Benchmark round: Accept Referral</h2>
+                <p>This is a benchmark check for the referral accept transaction.</p>
+                <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
+  type: fixed-rate
+  opts:
+    tps: 100
+</pre>
+                        <h3>Performance metrics for Accept Referral</h3>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                     <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
+                                </tr>
+                                <tr>
+                                     <td>Accept Referral</td> <td>500</td> <td>0</td> <td>339.0</td> <td>46.69</td> <td>11.42</td> <td>32.70</td> <td>10.5</td>
+                                </tr>
+                            </table>
+                        <h3>Resource utilization for Accept Referral</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [MB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>86.60</td> <td>8.48</td> <td>162</td> <td>138</td> <td>1.81</td> <td>4.85</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>86.40</td> <td>8.53</td> <td>159</td> <td>137</td> <td>1.77</td> <td>4.82</td> <td>0.00</td> <td>0.0313</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>80.86</td> <td>8.81</td> <td>150</td> <td>111</td> <td>1.80</td> <td>4.84</td> <td>0.00</td> <td>0.0234</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>36.24</td> <td>14.04</td> <td>439</td> <td>423</td> <td>12.3</td> <td>10.4</td> <td>17.0</td> <td>2.54</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>37.52</td> <td>14.50</td> <td>348</td> <td>342</td> <td>12.3</td> <td>10.4</td> <td>18.0</td> <td>0.453</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>35.60</td> <td>14.22</td> <td>444</td> <td>430</td> <td>12.3</td> <td>10.4</td> <td>17.7</td> <td>3.20</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.53</td> <td>0.02</td> <td>8.63</td> <td>8.15</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>2.55</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>5.79</td> <td>0.23</td> <td>8.18</td> <td>6.92</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.313</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>25.53</td> <td>4.77</td> <td>73.9</td> <td>71.2</td> <td>7.00</td> <td>20.7</td> <td>14.4</td> <td>2.21</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>6.19</td> <td>0.25</td> <td>8.61</td> <td>6.70</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
+            </div>
+
+            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="GovtHos Treatment">
+                <h2>Benchmark round: GovtHos Treatment</h2>
+                <p>This is a benchmark check for the Government Hospital Treatment transaction.</p>
+                <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
+  type: fixed-rate
+  opts:
+    tps: 100
+</pre>
+                        <h3>Performance metrics for GovtHos Treatment</h3>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                     <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
+                                </tr>
+                                <tr>
+                                     <td>GovtHos Treatment</td> <td>500</td> <td>0</td> <td>427.7</td> <td>70.56</td> <td>9.92</td> <td>44.22</td> <td>7.0</td>
+                                </tr>
+                            </table>
+                        <h3>Resource utilization for GovtHos Treatment</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [MB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>100.19</td> <td>6.13</td> <td>140</td> <td>128</td> <td>2.02</td> <td>5.48</td> <td>0.00</td> <td>0.305</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>97.92</td> <td>6.74</td> <td>144</td> <td>117</td> <td>1.99</td> <td>5.47</td> <td>0.00</td> <td>1.66</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>100.52</td> <td>5.13</td> <td>130</td> <td>123</td> <td>2.00</td> <td>5.48</td> <td>0.00</td> <td>0.719</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>33.66</td> <td>13.85</td> <td>433</td> <td>427</td> <td>13.8</td> <td>12.0</td> <td>23.3</td> <td>1.40</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>39.77</td> <td>12.99</td> <td>354</td> <td>348</td> <td>13.8</td> <td>11.8</td> <td>22.5</td> <td>3.23</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>32.06</td> <td>12.11</td> <td>438</td> <td>433</td> <td>13.8</td> <td>11.7</td> <td>23.4</td> <td>1.09</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>2.61</td> <td>0.07</td> <td>8.04</td> <td>7.96</td> <td>0.000134</td> <td>0.00</td> <td>0.00</td> <td>0.180</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.01</td> <td>0.00</td> <td>6.43</td> <td>6.43</td> <td>0.000134</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>22.55</td> <td>3.74</td> <td>83.2</td> <td>80.4</td> <td>7.75</td> <td>23.0</td> <td>15.8</td> <td>0.469</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>6.00</td> <td>5.96</td> <td>0.000134</td> <td>0.00</td> <td>0.00</td> <td>0.0469</td>
                                     </tr>
                                 </table>
                                 </tr>
@@ -296,9 +560,9 @@
 description: This is a benchmark check for all the transactions in the referral network
 workers:
   type: local
-  number: 3
+  number: 1
 rounds:
-  - label: register
+  - label: Register
     description: &gt;-
       This is a benchmark check for the transactions involving the registration
       of a patient to the blockchain
@@ -318,7 +582,7 @@ rounds:
       patientAddress: &#39;Kadri, Mangalore&#39;
       patientBloodGroup: A+
     callback: benchmarks&#x2F;scenario&#x2F;referral&#x2F;register.js
-  - label: query
+  - label: Query
     description: &gt;-
       This is a benchmark check for the transaction querying all the patient
       details
@@ -330,6 +594,73 @@ rounds:
     arguments:
       patientFirstName: Chris
     callback: benchmarks&#x2F;scenario&#x2F;referral&#x2F;query.js
+  - label: Request PHC
+    description: This is a benchmark check for the PHC request transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      requestReason: Regular check-up
+    callback: benchmarks&#x2F;scenario&#x2F;referral&#x2F;requestPHC.js
+  - label: Refer to GovtHos
+    description: This is a benchmark check for the referral issue transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      referralID: 11111
+      PHC: ManipalPHC
+      referredByContact: 9867485974
+      referredByEmail: example@gmail.com
+      referredByUserID: 22222
+      referredByLocalID: 33333
+      referralLocalPatientID: 44444
+      referralLocalNodeID: 55555
+      referralReason: A
+      referralNote: &#39;Patient has severe internal bleeding, must be operated on immediately&#39;
+      referralPriorityFlag: E
+    callback: benchmarks&#x2F;scenario&#x2F;referral&#x2F;referissue.js
+  - label: Accept Referral
+    description: This is a benchmark check for the referral accept transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      GovtHos: &#39;KMC, Manipal&#39;
+      referredToContact: 8672345974
+      referredToEmail: example2@gmail.com
+      referredToUserID: 66666
+      referredToLocalID: 77777
+    callback: benchmarks&#x2F;scenario&#x2F;referral&#x2F;referaccept.js
+  - label: GovtHos Treatment
+    description: &gt;-
+      This is a benchmark check for the Government Hospital Treatment
+      transaction.
+    txNumber: 500
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    arguments:
+      patientFirstName: Chris
+      treatingOrganization: &#39;KMC, Manipal&#39;
+      treatedByContact: 6429463752
+      treatedByEmail: example3@gmail.com
+      treatedByUserID: 88888
+      treatedByLocalID: 99999
+      treatmentSummary: &gt;-
+        Operated around the x y z regions and performed x y z procedure to a b c
+        d, administered x y z drugs to control the bleeding
+    callback: benchmarks&#x2F;scenario&#x2F;referral&#x2F;govthostreatment.js
 </pre>
                 <h3>SUT</h3>
                 <pre id="sutdetails">not provided</pre>
