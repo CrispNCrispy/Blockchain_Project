@@ -101,7 +101,6 @@ test:
 monitor:
   type:
   - docker
-  docker:
-    name:
+  docker:  
+    containers:
     - all
-  interval: 1
