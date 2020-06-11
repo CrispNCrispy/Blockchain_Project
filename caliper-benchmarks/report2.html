@@ -162,22 +162,22 @@
                     </tr>
 
                     <tr>
-                         <td>Register</td> <td>500</td> <td>0</td> <td>97.6</td> <td>3.24</td> <td>0.51</td> <td>1.52</td> <td>82.5</td>
+                         <td>Register</td> <td>500</td> <td>0</td> <td>100.3</td> <td>0.95</td> <td>0.08</td> <td>0.26</td> <td>98.6</td>
                     </tr>
                     <tr>
-                         <td>Query</td> <td>500</td> <td>0</td> <td>100.2</td> <td>0.03</td> <td>0.01</td> <td>0.01</td> <td>100.0</td>
+                         <td>Query</td> <td>500</td> <td>0</td> <td>100.2</td> <td>0.11</td> <td>0.01</td> <td>0.01</td> <td>100.0</td>
                     </tr>
                     <tr>
-                         <td>Request PHC</td> <td>500</td> <td>0</td> <td>610.5</td> <td>5.31</td> <td>3.81</td> <td>4.51</td> <td>90.7</td>
+                         <td>Request PHC</td> <td>500</td> <td>0</td> <td>672.0</td> <td>4.04</td> <td>2.69</td> <td>3.19</td> <td>116.6</td>
                     </tr>
                     <tr>
-                         <td>Refer to GovtHos</td> <td>500</td> <td>0</td> <td>520.8</td> <td>6.82</td> <td>4.96</td> <td>5.89</td> <td>71.0</td>
+                         <td>Refer to GovtHos</td> <td>500</td> <td>0</td> <td>679.3</td> <td>5.05</td> <td>3.41</td> <td>4.13</td> <td>96.5</td>
                     </tr>
                     <tr>
-                         <td>Accept Referral</td> <td>500</td> <td>0</td> <td>631.3</td> <td>5.94</td> <td>4.05</td> <td>5.00</td> <td>81.2</td>
+                         <td>Accept Referral</td> <td>500</td> <td>0</td> <td>684.9</td> <td>4.31</td> <td>2.68</td> <td>3.57</td> <td>108.4</td>
                     </tr>
                     <tr>
-                         <td>GovtHos Treatment</td> <td>500</td> <td>0</td> <td>613.5</td> <td>6.01</td> <td>4.43</td> <td>5.25</td> <td>78.4</td>
+                         <td>GovtHos Treatment</td> <td>500</td> <td>0</td> <td>687.8</td> <td>4.35</td> <td>3.05</td> <td>3.68</td> <td>107.6</td>
                     </tr>
                 </table>
             </div>
@@ -195,10 +195,52 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>Register</td> <td>500</td> <td>0</td> <td>97.6</td> <td>3.24</td> <td>0.51</td> <td>1.52</td> <td>82.5</td>
+                                     <td>Register</td> <td>500</td> <td>0</td> <td>100.3</td> <td>0.95</td> <td>0.08</td> <td>0.26</td> <td>98.6</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for Register</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [KB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>80.80</td> <td>17.35</td> <td>73.8</td> <td>57.7</td> <td>0.673</td> <td>2.65</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>84.61</td> <td>17.83</td> <td>75.0</td> <td>59.0</td> <td>0.677</td> <td>2.65</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>83.44</td> <td>16.86</td> <td>76.0</td> <td>57.0</td> <td>0.675</td> <td>2.65</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>39.68</td> <td>12.38</td> <td>486</td> <td>365</td> <td>7.35</td> <td>5.71</td> <td>5.48</td> <td>32.0</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>39.42</td> <td>12.00</td> <td>255</td> <td>240</td> <td>7.22</td> <td>5.48</td> <td>5.47</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>39.10</td> <td>12.13</td> <td>466</td> <td>357</td> <td>7.34</td> <td>5.50</td> <td>5.48</td> <td>20.0</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.01</td> <td>0.00</td> <td>15.5</td> <td>15.5</td> <td>0.000421</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>18.40</td> <td>4.30</td> <td>43.8</td> <td>34.7</td> <td>4.31</td> <td>12.6</td> <td>4.38</td> <td>84.0</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.01</td> <td>0.00</td> <td>17.3</td> <td>17.3</td> <td>0.000421</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.01</td> <td>0.00</td> <td>19.4</td> <td>19.4</td> <td>0.000421</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
             </div>
 
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Query">
@@ -215,10 +257,52 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>Query</td> <td>500</td> <td>0</td> <td>100.2</td> <td>0.03</td> <td>0.01</td> <td>0.01</td> <td>100.0</td>
+                                     <td>Query</td> <td>500</td> <td>0</td> <td>100.2</td> <td>0.11</td> <td>0.01</td> <td>0.01</td> <td>100.0</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for Query</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [B]</th> <th>Disc Read [B]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>52.16</td> <td>24.68</td> <td>73.8</td> <td>66.7</td> <td>1.50</td> <td>2.76</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>53.02</td> <td>24.88</td> <td>75.3</td> <td>68.6</td> <td>1.50</td> <td>2.76</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>52.52</td> <td>24.56</td> <td>76.8</td> <td>70.5</td> <td>1.49</td> <td>2.76</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>27.04</td> <td>15.24</td> <td>488</td> <td>488</td> <td>3.43</td> <td>6.91</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>25.98</td> <td>14.50</td> <td>258</td> <td>258</td> <td>3.44</td> <td>6.94</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>26.34</td> <td>14.63</td> <td>469</td> <td>469</td> <td>3.44</td> <td>6.94</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>15.5</td> <td>15.5</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>0.00</td> <td>0.00</td> <td>45.3</td> <td>45.3</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>17.3</td> <td>17.3</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>19.4</td> <td>19.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
             </div>
 
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Request PHC">
@@ -235,10 +319,52 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>Request PHC</td> <td>500</td> <td>0</td> <td>610.5</td> <td>5.31</td> <td>3.81</td> <td>4.51</td> <td>90.7</td>
+                                     <td>Request PHC</td> <td>500</td> <td>0</td> <td>672.0</td> <td>4.04</td> <td>2.69</td> <td>3.19</td> <td>116.6</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for Request PHC</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [KB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>86.87</td> <td>17.75</td> <td>143</td> <td>89.4</td> <td>1.66</td> <td>4.02</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>88.10</td> <td>17.62</td> <td>144</td> <td>91.2</td> <td>1.66</td> <td>4.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>91.67</td> <td>18.33</td> <td>128</td> <td>88.9</td> <td>1.67</td> <td>4.01</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>49.59</td> <td>19.91</td> <td>493</td> <td>489</td> <td>8.20</td> <td>8.63</td> <td>4.90</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>53.71</td> <td>20.12</td> <td>264</td> <td>259</td> <td>8.21</td> <td>8.64</td> <td>4.90</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>50.29</td> <td>20.12</td> <td>474</td> <td>470</td> <td>8.20</td> <td>8.64</td> <td>4.90</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>15.5</td> <td>15.5</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>31.50</td> <td>6.30</td> <td>63.6</td> <td>49.0</td> <td>3.77</td> <td>10.8</td> <td>3.81</td> <td>20.0</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>17.3</td> <td>17.3</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>19.4</td> <td>19.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
             </div>
 
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Refer to GovtHos">
@@ -255,10 +381,52 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>Refer to GovtHos</td> <td>500</td> <td>0</td> <td>520.8</td> <td>6.82</td> <td>4.96</td> <td>5.89</td> <td>71.0</td>
+                                     <td>Refer to GovtHos</td> <td>500</td> <td>0</td> <td>679.3</td> <td>5.05</td> <td>3.41</td> <td>4.13</td> <td>96.5</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for Refer to GovtHos</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [KB]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>117.14</td> <td>23.59</td> <td>164</td> <td>150</td> <td>1.83</td> <td>4.54</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>118.33</td> <td>24.14</td> <td>169</td> <td>149</td> <td>1.84</td> <td>4.54</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>114.77</td> <td>23.72</td> <td>159</td> <td>137</td> <td>1.83</td> <td>4.55</td> <td>0.00</td> <td>100</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>54.10</td> <td>14.31</td> <td>503</td> <td>497</td> <td>11.7</td> <td>9.84</td> <td>7.48</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>52.34</td> <td>15.76</td> <td>275</td> <td>268</td> <td>11.7</td> <td>9.83</td> <td>7.49</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>53.74</td> <td>13.28</td> <td>484</td> <td>478</td> <td>11.7</td> <td>9.85</td> <td>7.35</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>15.5</td> <td>15.5</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>44.09</td> <td>8.84</td> <td>82.8</td> <td>77.3</td> <td>6.65</td> <td>19.6</td> <td>6.85</td> <td>20.0</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>17.3</td> <td>17.3</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>19.4</td> <td>19.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
             </div>
 
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="Accept Referral">
@@ -275,10 +443,52 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>Accept Referral</td> <td>500</td> <td>0</td> <td>631.3</td> <td>5.94</td> <td>4.05</td> <td>5.00</td> <td>81.2</td>
+                                     <td>Accept Referral</td> <td>500</td> <td>0</td> <td>684.9</td> <td>4.31</td> <td>2.68</td> <td>3.57</td> <td>108.4</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for Accept Referral</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [MB]</th> <th>Disc Read [B]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>108.39</td> <td>23.39</td> <td>164</td> <td>159</td> <td>1.85</td> <td>4.86</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>108.82</td> <td>23.04</td> <td>169</td> <td>158</td> <td>1.85</td> <td>4.85</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>113.07</td> <td>22.62</td> <td>159</td> <td>156</td> <td>1.87</td> <td>4.86</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>49.63</td> <td>14.07</td> <td>508</td> <td>505</td> <td>10.2</td> <td>10.4</td> <td>4.96</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>65.23</td> <td>19.18</td> <td>281</td> <td>277</td> <td>10.1</td> <td>10.4</td> <td>4.82</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>58.58</td> <td>16.41</td> <td>490</td> <td>486</td> <td>10.1</td> <td>10.4</td> <td>5.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.56</td> <td>0.11</td> <td>15.5</td> <td>15.5</td> <td>0.000354</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>40.62</td> <td>8.16</td> <td>87.8</td> <td>83.8</td> <td>4.84</td> <td>14.0</td> <td>4.91</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.54</td> <td>0.11</td> <td>17.4</td> <td>17.4</td> <td>0.000354</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.61</td> <td>0.12</td> <td>19.4</td> <td>19.4</td> <td>0.000421</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
             </div>
 
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="GovtHos Treatment">
@@ -295,10 +505,52 @@
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>GovtHos Treatment</td> <td>500</td> <td>0</td> <td>613.5</td> <td>6.01</td> <td>4.43</td> <td>5.25</td> <td>78.4</td>
+                                     <td>GovtHos Treatment</td> <td>500</td> <td>0</td> <td>687.8</td> <td>4.35</td> <td>3.05</td> <td>3.68</td> <td>107.6</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for GovtHos Treatment</h3>
+                            <h4>Resource monitor: docker</h4>
+                            <table style="min-width: 100%;">
+                                <tr>
+                                <table>
+                                    <tr>
+                                         <th>Name</th> <th>CPU%(max)</th> <th>CPU%(avg)</th> <th>Memory(max) [MB]</th> <th>Memory(avg) [MB]</th> <th>Traffic In [MB]</th> <th>Traffic Out [MB]</th> <th>Disc Write [B]</th> <th>Disc Read [B]</th>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org3.example.com-referral-0.0.3</td> <td>105.20</td> <td>30.79</td> <td>153</td> <td>149</td> <td>2.07</td> <td>5.52</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org2.example.com-referral-0.0.3</td> <td>107.84</td> <td>31.41</td> <td>154</td> <td>140</td> <td>2.04</td> <td>3.22</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>dev-peer0.org1.example.com-referral-0.0.3</td> <td>109.50</td> <td>32.36</td> <td>150</td> <td>137</td> <td>2.03</td> <td>1.78</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org1.example.com</td> <td>32.48</td> <td>16.80</td> <td>512</td> <td>512</td> <td>3.44</td> <td>4.05</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org3.example.com</td> <td>43.93</td> <td>21.70</td> <td>286</td> <td>286</td> <td>6.20</td> <td>11.7</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>peer0.org2.example.com</td> <td>34.38</td> <td>18.91</td> <td>494</td> <td>494</td> <td>4.71</td> <td>6.99</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org1.example.com</td> <td>0.00</td> <td>0.00</td> <td>15.5</td> <td>15.5</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>orderer.example.com</td> <td>0.32</td> <td>0.08</td> <td>90.0</td> <td>90.0</td> <td>0.0312</td> <td>0.00149</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org2.example.com</td> <td>0.00</td> <td>0.00</td> <td>17.4</td> <td>17.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                    <tr>
+                                         <td>ca.org3.example.com</td> <td>0.00</td> <td>0.00</td> <td>19.4</td> <td>19.4</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td>
+                                    </tr>
+                                </table>
+                                </tr>
+                            </table>
+                            <div class="charting">
+                            </div>
             </div>
 
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;">
