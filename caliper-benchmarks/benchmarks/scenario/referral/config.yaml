@@ -104,3 +104,8 @@ monitor:
   docker:  
     containers:
     - all
+    charting:
+      bar:
+        metrics: [all]
+      polar:
+        metrics: [all]
