@@ -25,10 +25,6 @@ Network created with a makeshift smart contract (investment contact) to experime
 - Query 1 - Peronal Details Query and application - Displaying the personal details and status of the patient
 - Query 2 - All Latest Details Query and applicaiton - To display all current world state details of the patient
 
-#### Work to be done:
-- Create couchdb container 
-- Implement data masking
-
 ## Usage Instructions
 
 ### Installation Instructions
